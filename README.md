@@ -3,7 +3,7 @@
 
 <div align="center">
 
-<img src="assets/logo.png" width="20%" />
+
 
 [![Flutter](https://img.shields.io/badge/Flutter-3.x-blue.svg)](https://flutter.dev)
 [![Architecture](https://img.shields.io/badge/Architecture-Clean%20Architecture-green.svg)]()
