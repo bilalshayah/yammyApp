@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:yum_quick/core/widgets/category_item.dart';
+import 'package:yum_quick/core/theme/app_theme.dart';
 import 'package:yum_quick/core/widgets/navigation_bar.dart';
 import 'package:yum_quick/core/widgets/search_bar.dart';
 
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(fontFamily: "leagueSpartan"),
+      theme: AppTheme.lightTheme,
 
       home: Scaffold(
         bottomNavigationBar: NavBar(currentIndex: 0),
