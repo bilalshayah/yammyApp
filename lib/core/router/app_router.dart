@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../login_screen.dart';
-import '../../register_screen.dart';
+import '../../features/auth/presentation/pages/login_page/login_screen.dart';
+import '../../features/auth/presentation/pages/register_page/register_screen.dart';
 
 class AppRouter {
 

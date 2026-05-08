@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'core/constants/appTextStyle.dart';
-import 'core/constants/app_appbar.dart';
-import 'core/constants/app_colors.dart';
-import 'core/icon_container.dart';
-import 'core/widgets/auth_button.dart';
-import 'core/widgets/custom_field.dart';
-import 'core/widgets/navigation_bar.dart';
+import '../../../../../core/constants/appTextStyle.dart';
+import '../../../../../core/constants/app_appbar.dart';
+import '../../../../../core/constants/app_colors.dart';
+import '../../../../../core/icon_container.dart';
+import '../../../../../core/widgets/auth_button.dart';
+import '../../../../../core/widgets/custom_field.dart';
+import '../../../../../core/widgets/navigation_bar.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
