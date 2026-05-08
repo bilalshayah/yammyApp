@@ -29,6 +29,12 @@ class AppTextStyles {
     fontSize: 24,
     color: AppColors.textPrimary,
   );
+  static const TextStyle description = TextStyle(
+    fontFamily: 'LeagueSpartan',
+    fontWeight: FontWeight.w500,
+    fontSize: 14,
+    color: AppColors.textWhite,
+  );
 
   static const TextStyle subtitle = TextStyle(
     fontFamily: 'LeagueSpartan',
@@ -68,5 +74,10 @@ class AppTextStyles {
     fontSize: 18,
     fontWeight: FontWeight.w600,
     color: AppColors.textPrimary,
+  );
+  static const TextStyle YumQuick = TextStyle(
+    fontFamily: 'Poppins',
+    fontSize: 34.85,
+    fontWeight: FontWeight.w800,
   );
 }

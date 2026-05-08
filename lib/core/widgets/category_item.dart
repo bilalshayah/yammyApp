@@ -26,7 +26,7 @@ class CategoryItem extends StatelessWidget {
           height: 62,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30),
-            color: isActive ? AppColors.activeCategory : AppColors.yellow2,
+            color: isActive ? AppColors.active : AppColors.yellow2,
           ),
           child: Padding(
             padding: const EdgeInsets.all(12),
