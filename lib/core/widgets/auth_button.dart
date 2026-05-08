@@ -5,13 +5,11 @@ class AuthButton extends StatelessWidget {
   final String text;
   final VoidCallback? function;
   final Color? color;
-  final Color? textColor;
   const AuthButton({
     super.key,
     required this.text,
     this.function,
     this.color = AppColors.primary,
-    this.textColor = AppColors.background,
   });
 
   @override
@@ -21,15 +19,14 @@ class AuthButton extends StatelessWidget {
       height: 55,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          padding: EdgeInsets.fromLTRB(12, 8, 12, 8),
+          padding: const EdgeInsets.fromLTRB(12, 8, 12, 8),
           backgroundColor: color,
-          foregroundColor: textColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
           ),
         ),
         onPressed: function,
-        child: Text(text, style: AppTextStyles.buttonText),
+        child: Text(text, style: AppTextStyles.buttonText(color: AppColors.background)),
       ),
     );
   }

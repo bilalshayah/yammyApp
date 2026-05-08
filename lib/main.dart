@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:yammyapp/core/theme/app_theme.dart';
-import 'package:yammyapp/core/widgets/navigation_bar.dart';
-import 'package:yammyapp/core/widgets/search_bar.dart';
+import 'core/router/app_router.dart';
+import 'core/theme/app_theme.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -21,23 +20,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.lightTheme,
-      home: Scaffold(
-        bottomNavigationBar: NavBar(currentIndex: 0),
-        body: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 36),
-          child: Column(
-            children: [
-              const SizedBox(height: 60),
-              CustomSearchBar(
-                controller: TextEditingController(),
-                onFilterTap: () => print(3),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme.lightTheme,
+        initialRoute: "/login",
+        //AppRoutes
+        onGenerateRoute: (settings) => AppRouter.generateRoute(settings));
   }
 }

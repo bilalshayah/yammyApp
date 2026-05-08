@@ -24,21 +24,21 @@ class _CustomFieldState extends State<CustomField> {
           ? TextInputType.emailAddress
           : (widget.type.toLowerCase() == "password")
           ? TextInputType.visiblePassword
-          : TextInputType.numberWithOptions(),
+          : const TextInputType.numberWithOptions(),
       obscureText: (widget.type.toLowerCase()=="password")? !isShowed : false,
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.symmetric(horizontal: 16),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16),
         hint: (widget.type.toLowerCase() == "password")
-            ? Text("*************")
+            ? const Text("*************")
             : (widget.type.toLowerCase() == "email")
-            ? Text("example@example.com")
-            : Text("+ 123 456 789"),
-        hintStyle: AppTextStyles.hint,
+            ? const Text("example@example.com")
+            : const Text("+ 123 456 789"),
+        hintStyle: AppTextStyles.hint(),
         border: OutlineInputBorder(
           borderSide: BorderSide.none,
           borderRadius: BorderRadius.circular(13),
         ),
-        fillColor: Color(0xffF3E9B5),
+        fillColor: AppColors.yellow2,
         filled: true,
         suffixIcon: (widget.type.toLowerCase() == "password")
             ? Padding(
@@ -53,12 +53,14 @@ class _CustomFieldState extends State<CustomField> {
                     });
                   },
                   child: SvgPicture.asset(
-                    isShowed ? AppAssets.eye : AppAssets.eye_off,
-                    color: AppColors.primary,
+                    isShowed ? AppAssets.show_on : AppAssets.show_off,
+                    height: 20,
+                    width: 20,
+                    colorFilter: const ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
                   ),
                 ),
               )
-            : SizedBox.shrink(),
+            : const SizedBox.shrink(),
       ),
     );
   }
