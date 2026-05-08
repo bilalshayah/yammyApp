@@ -22,7 +22,7 @@ class LogoutDialog extends StatelessWidget {
       content: Text(
         'Are you sure you want to log out?',
         textAlign: TextAlign.center,
-        style: AppTextStyles.title,
+        style: AppTextStyles.title(),
       ),
       actions: [
         Row(

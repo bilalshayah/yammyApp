@@ -33,12 +33,12 @@ class _CustomFieldState extends State<CustomField> {
             : (widget.type.toLowerCase() == "email")
             ? Text("example@example.com")
             : Text("+ 123 456 789"),
-        hintStyle: AppTextStyles.hint,
+        hintStyle: AppTextStyles.hint(),
         border: OutlineInputBorder(
           borderSide: BorderSide.none,
           borderRadius: BorderRadius.circular(13),
         ),
-        fillColor: Color(0xffF3E9B5),
+        fillColor: AppColors.yellow2,
         filled: true,
         suffixIcon: (widget.type.toLowerCase() == "password")
             ? Padding(
@@ -53,7 +53,9 @@ class _CustomFieldState extends State<CustomField> {
                     });
                   },
                   child: SvgPicture.asset(
-                    isShowed ? AppAssets.eye : AppAssets.eyeOff,
+                    height: 20,
+                    width: 20,
+                    isShowed ? AppAssets.show_on : AppAssets.show_off,
                     color: AppColors.primary,
                   ),
                 ),

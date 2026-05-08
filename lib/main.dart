@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:foodly_ecosystem/core/theme/app_theme.dart';
-import 'package:foodly_ecosystem/core/widgets/custom_field.dart';
-import 'package:foodly_ecosystem/core/widgets/logout_dialog.dart';
-import 'package:foodly_ecosystem/core/widgets/navigation_bar.dart';
+import 'core/router/app_router.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,27 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      home: Scaffold(
-        bottomNavigationBar: NavBar(currentIndex: 0),
-        body: Builder(
-          builder: (context) =>Container(
-            margin: EdgeInsets.symmetric(horizontal: 36),
-            child: Column(
-              children: [
-                SizedBox(height: 60),
-                MaterialButton(
-                  color: Colors.amber,
-                  onPressed: () {
-                   return LogoutDialog.show(context);
-                  },
-                  child: Text("press"),
-                ),
-              ],
-            ),
-          ), 
-          
-        ),
-      ),
-    );
+      initialRoute: "/login",
+      onGenerateRoute: (settings) => AppRouter.generateRoute(settings));
   }
 }

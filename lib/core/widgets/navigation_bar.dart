@@ -3,8 +3,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:foodly_ecosystem/core/constants/constants.dart';
 
 class NavBar extends StatelessWidget {
-  final int currentIndex;
-  const NavBar({super.key, required this.currentIndex});
+  final int? currentIndex;
+  const NavBar({super.key, this.currentIndex});
 
   @override
   Widget build(BuildContext context) {
@@ -47,12 +47,12 @@ class NavBar extends StatelessWidget {
 class _NavItem extends StatelessWidget {
   final String icon;
   final int index;
-  final int currentIndex;
+  final int? currentIndex;
 
   const _NavItem({
     required this.icon,
     required this.index,
-    required this.currentIndex,
+    this.currentIndex,
   });
 
   @override

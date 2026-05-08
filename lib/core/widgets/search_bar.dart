@@ -18,7 +18,7 @@ class CustomSearchBar extends StatelessWidget {
       controller: controller,
       decoration: InputDecoration(
         hintText: 'Search',
-        hintStyle: AppTextStyles.hint,
+        hintStyle: AppTextStyles.hint(),
         fillColor: AppColors.background,
         filled: true,
         border: OutlineInputBorder(
