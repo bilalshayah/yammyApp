@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:foodly_ecosystem/core/constants/constants.dart';
+
+import '../constants/appTextStyle.dart';
+import '../constants/app_assets.dart';
+import '../constants/app_colors.dart';
 
 class CategoryItem extends StatelessWidget {
   final String icon;

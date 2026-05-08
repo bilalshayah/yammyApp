@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:foodly_ecosystem/core/constants/constants.dart';
+import '../constants/appTextStyle.dart';
+import '../constants/app_colors.dart';
 
 class CustomButton extends StatelessWidget {
   final String text;

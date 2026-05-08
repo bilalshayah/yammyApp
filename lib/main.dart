@@ -24,7 +24,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-
       home: Scaffold(
         bottomNavigationBar: NavBar(currentIndex: 0),
         body: Builder(
