@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:yum_quick/core/theme/app_theme.dart';
-import 'package:yum_quick/core/widgets/navigation_bar.dart';
-import 'package:yum_quick/core/widgets/search_bar.dart';
+import 'package:foodly_ecosystem/core/theme/app_theme.dart';
+import 'package:foodly_ecosystem/core/widgets/custom_field.dart';
+import 'package:foodly_ecosystem/core/widgets/logout_dialog.dart';
+import 'package:foodly_ecosystem/core/widgets/navigation_bar.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,15 +27,23 @@ class MyApp extends StatelessWidget {
 
       home: Scaffold(
         bottomNavigationBar: NavBar(currentIndex: 0),
-        body: Container(
-          margin: EdgeInsets.symmetric(horizontal: 36),
-          child: Column(
-            children: [
-              SizedBox(height: 60),
-
-              CustomSearchBar(controller: TextEditingController(),onFilterTap: () => print(3),)
-            ],
-          ),
+        body: Builder(
+          builder: (context) =>Container(
+            margin: EdgeInsets.symmetric(horizontal: 36),
+            child: Column(
+              children: [
+                SizedBox(height: 60),
+                MaterialButton(
+                  color: Colors.amber,
+                  onPressed: () {
+                   return LogoutDialog.show(context);
+                  },
+                  child: Text("press"),
+                ),
+              ],
+            ),
+          ), 
+          
         ),
       ),
     );

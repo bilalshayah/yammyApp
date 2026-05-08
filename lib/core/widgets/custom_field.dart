@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:yum_quick/core/constants/appTextStyle.dart';
-import 'package:yum_quick/core/constants/app_assets.dart';
-import 'package:yum_quick/core/constants/app_colors.dart';
+import 'package:foodly_ecosystem/core/constants/appTextStyle.dart';
+import 'package:foodly_ecosystem/core/constants/app_assets.dart';
+import 'package:foodly_ecosystem/core/constants/app_colors.dart';
 
 class CustomField extends StatefulWidget {
   final TextEditingController controller;
@@ -53,7 +53,7 @@ class _CustomFieldState extends State<CustomField> {
                     });
                   },
                   child: SvgPicture.asset(
-                    isShowed ? AppAssets.eye : AppAssets.eye_off,
+                    isShowed ? AppAssets.eye : AppAssets.eyeOff,
                     color: AppColors.primary,
                   ),
                 ),

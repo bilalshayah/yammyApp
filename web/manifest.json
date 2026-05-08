@@ -1,6 +1,6 @@
 {
-    "name": "yum_quick",
-    "short_name": "yum_quick",
+    "name": "Foodly Ecosystem",
+    "short_name": "Foodly",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

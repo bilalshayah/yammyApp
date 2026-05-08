@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "yum_quick" "\0"
+            VALUE "FileDescription", "Foodly Ecosystem" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "yum_quick" "\0"
+            VALUE "InternalName", "foodly_ecosystem" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2026 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "yum_quick.exe" "\0"
-            VALUE "ProductName", "yum_quick" "\0"
+            VALUE "OriginalFilename", "foodly_ecosystem.exe" "\0"
+            VALUE "ProductName", "Foodly Ecosystem" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

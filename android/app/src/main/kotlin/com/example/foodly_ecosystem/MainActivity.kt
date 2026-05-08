@@ -1,4 +1,4 @@
-package com.example.yum_quick
+package com.example.foodly_ecosystem
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,4 +1,4 @@
-# yum_quick
+# Foodly Ecosystem
 
 A new Flutter project.
 

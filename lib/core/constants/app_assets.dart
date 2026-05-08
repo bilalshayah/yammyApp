@@ -12,6 +12,6 @@ class AppAssets {
   static const String vegan = 'assets/icons/Vegan.svg';
   static const String filter = 'assets/icons/filter.svg';
   static const String eye = 'assets/icons/eye.svg';
-  static const String eye_off = 'assets/icons/eye-off.svg';
+  static const String eyeOff = 'assets/icons/eye-off.svg';
 
 }

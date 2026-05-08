@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:yum_quick/core/constants/constants.dart';
+import 'package:foodly_ecosystem/core/constants/constants.dart';
 
 class CustomSearchBar extends StatelessWidget {
   final TextEditingController controller;
