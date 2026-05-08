@@ -25,7 +25,7 @@ class _CustomFieldState extends State<CustomField> {
           : (widget.type.toLowerCase() == "password")
           ? TextInputType.visiblePassword
           : TextInputType.numberWithOptions(),
-      obscureText: isShowed ? false : true,
+      obscureText: (widget.type.toLowerCase()=="password")? !isShowed : false,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(horizontal: 16),
         hint: (widget.type.toLowerCase() == "password")
