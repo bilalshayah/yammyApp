@@ -1,6 +1,5 @@
-// lib/core/theme/app_theme.dart
-
 import 'package:flutter/material.dart';
+
 import '../constants/app_colors.dart';
 import '../constants/appTextStyle.dart';
 
@@ -14,13 +13,13 @@ class AppTheme {
           secondary: AppColors.secondary,
         ),
         dividerColor: AppColors.divider,
-        textTheme: const TextTheme(
-          displayLarge: AppTextStyles.h1,
-          displayMedium: AppTextStyles.h2,
-          labelLarge: AppTextStyles.buttonText,
-          bodySmall: AppTextStyles.label,
-          titleMedium: AppTextStyles.subtitle,
-          titleLarge: AppTextStyles.title, // Poppins SemiBold
+        textTheme: TextTheme(
+          displayLarge: AppTextStyles.h1(),
+          displayMedium: AppTextStyles.h2(),
+          labelLarge: AppTextStyles.buttonText(),
+          bodySmall: AppTextStyles.label(),
+          titleMedium: AppTextStyles.subtitle(),
+          titleLarge: AppTextStyles.title(), // Poppins SemiBold
 
         ),
       );

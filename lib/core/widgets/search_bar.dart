@@ -18,7 +18,7 @@ class CustomSearchBar extends StatelessWidget {
       controller: controller,
       decoration: InputDecoration(
         hintText: 'Search',
-        hintStyle: AppTextStyles.hint,
+        hintStyle: AppTextStyles.hint(),
         fillColor: AppColors.background,
         filled: true,
         border: OutlineInputBorder(
@@ -32,7 +32,7 @@ class CustomSearchBar extends StatelessWidget {
             child: Container(
               width: 20,
               height: 20,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: AppColors.primary,
                 shape: BoxShape.circle,
               ),
@@ -40,7 +40,7 @@ class CustomSearchBar extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: SvgPicture.asset(
                   AppAssets.filter,
-                  colorFilter: ColorFilter.mode(
+                  colorFilter: const ColorFilter.mode(
                     AppColors.background,
                     BlendMode.srcIn,
                   ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:yammyapp/core/constants/constants.dart';
+
+import '../constants/appTextStyle.dart';
+import '../constants/app_colors.dart';
 
 class FoodCard extends StatelessWidget {
   final String imageUrl;
@@ -20,7 +22,7 @@ class FoodCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 36),
+      margin: const EdgeInsets.symmetric(horizontal: 36),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -40,9 +42,9 @@ class FoodCard extends StatelessWidget {
           // name + rating + price
           Row(
             children: [
-              Text(name, style: AppTextStyles.title),
+              Text(name, style: AppTextStyles.title()),
               const SizedBox(width: 8),
-              Text('•', style: TextStyle(color: AppColors.primary)),
+              const Text('•', style: TextStyle(color: AppColors.primary)),
               const SizedBox(width: 8),
               // rating badge
               Container(
@@ -53,20 +55,20 @@ class FoodCard extends StatelessWidget {
                 ),
                 child: Row(
                   children: [
-                    Text(rating.toString(), style: AppTextStyles.rate),
+                    Text(rating.toString(), style: AppTextStyles.rate()),
                     const SizedBox(width: 2),
                     const Icon(Icons.star, color: Colors.amber, size: 13),
                   ],
                 ),
               ),
               const Spacer(),
-              Text('\$${price.toStringAsFixed(2)}', style: AppTextStyles.price),
+              Text('\$${price.toStringAsFixed(2)}', style: AppTextStyles.price()),
             ],
           ),
 
           const SizedBox(height: 4),
 
-          Text(description, style: AppTextStyles.subtitle),
+          Text(description, style: AppTextStyles.subtitle()),
 
           const Divider(height: 24, color: AppColors.divider),
         ],

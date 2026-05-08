@@ -1,5 +1,5 @@
 class AppAssets {
-  // icons
+
   static const String home = 'assets/icons/home.svg';
   static const String dishes = 'assets/icons/dishes.svg';
   static const String preferred = 'assets/icons/prefered.svg';
@@ -12,6 +12,9 @@ class AppAssets {
   static const String vegan = 'assets/icons/Vegan.svg';
   static const String filter = 'assets/icons/filter.svg';
   static const String eye = 'assets/icons/eye.svg';
+  static const String eyeOff = 'assets/icons/eye-off.svg';
+  static const String logo = 'assets/icons/logo.svg';
   static const String eye_off = 'assets/icons/eye-off.svg';
-
+  static const String show_on = 'assets/icons/Show On.svg';
+  static const String show_off = 'assets/icons/Show Off.svg';
 }
