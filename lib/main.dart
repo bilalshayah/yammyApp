@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Flutter Demo'),
         ),
-        body: const Center(
+        body:  Center(
           child: Text('Hello World'),
         ),
       ),
