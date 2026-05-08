@@ -1,6 +1,6 @@
 {
-    "name": "Foodly Ecosystem",
-    "short_name": "Foodly",
+    "name": "yammyapp",
+    "short_name": "yammyapp",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

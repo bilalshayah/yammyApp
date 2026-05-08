@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:foodly_ecosystem/core/constants/constants.dart';
+
+import '../constants/appTextStyle.dart';
+import '../constants/app_colors.dart';
 
 class FoodCard extends StatelessWidget {
   final String imageUrl;
@@ -20,7 +22,7 @@ class FoodCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 36),
+      margin: const EdgeInsets.symmetric(horizontal: 36),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -42,7 +44,7 @@ class FoodCard extends StatelessWidget {
             children: [
               Text(name, style: AppTextStyles.title()),
               const SizedBox(width: 8),
-              Text('•', style: TextStyle(color: AppColors.primary)),
+              const Text('•', style: TextStyle(color: AppColors.primary)),
               const SizedBox(width: 8),
               // rating badge
               Container(

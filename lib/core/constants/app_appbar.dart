@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foodly_ecosystem/core/constants/svg_icon.dart';
+import 'package:yammyapp/core/constants/svg_icon.dart';
 import 'appTextStyle.dart';
 import 'app_colors.dart';
 

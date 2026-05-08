@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:foodly_ecosystem/core/constants/appTextStyle.dart';
-import 'package:foodly_ecosystem/core/constants/app_colors.dart';
-import 'package:foodly_ecosystem/core/widgets/custom_button.dart';
+
+import '../constants/appTextStyle.dart';
+import '../constants/app_colors.dart';
+import 'custom_button.dart';
+
 
 class LogoutDialog extends StatelessWidget {
   const LogoutDialog({super.key});

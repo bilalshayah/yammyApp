@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:foodly_ecosystem/core/constants/constants.dart';
+import 'package:yammyapp/core/constants/constants.dart';
 
 class CustomSearchBar extends StatelessWidget {
   final TextEditingController controller;
@@ -32,7 +32,7 @@ class CustomSearchBar extends StatelessWidget {
             child: Container(
               width: 20,
               height: 20,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: AppColors.primary,
                 shape: BoxShape.circle,
               ),
@@ -40,7 +40,7 @@ class CustomSearchBar extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: SvgPicture.asset(
                   AppAssets.filter,
-                  colorFilter: ColorFilter.mode(
+                  colorFilter: const ColorFilter.mode(
                     AppColors.background,
                     BlendMode.srcIn,
                   ),

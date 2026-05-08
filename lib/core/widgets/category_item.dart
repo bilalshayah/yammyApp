@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import '../constants/appTextStyle.dart';
-import '../constants/app_assets.dart';
-import '../constants/app_colors.dart';
+import 'package:yammyapp/core/constants/constants.dart';
 
 class CategoryItem extends StatelessWidget {
   final String icon;
@@ -35,7 +32,7 @@ class CategoryItem extends StatelessWidget {
             padding: const EdgeInsets.all(12),
             child: SvgPicture.asset(
               icon,
-              colorFilter: ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
+              colorFilter: const ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
             ),
           ),
         ),

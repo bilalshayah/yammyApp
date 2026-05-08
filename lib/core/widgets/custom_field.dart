@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:foodly_ecosystem/core/constants/appTextStyle.dart';
-import 'package:foodly_ecosystem/core/constants/app_assets.dart';
-import 'package:foodly_ecosystem/core/constants/app_colors.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:yammyapp/core/constants/appTextStyle.dart';
+import 'package:yammyapp/core/constants/app_assets.dart';
+import 'package:yammyapp/core/constants/app_colors.dart';
 
 class CustomField extends StatefulWidget {
   final TextEditingController controller;
@@ -24,12 +24,12 @@ class _CustomFieldState extends State<CustomField> {
           ? TextInputType.emailAddress
           : (widget.type.toLowerCase() == "password")
           ? TextInputType.visiblePassword
-          : TextInputType.numberWithOptions(),
+          : const TextInputType.numberWithOptions(),
       obscureText: (widget.type.toLowerCase()=="password")? !isShowed : false,
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.symmetric(horizontal: 16),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16),
         hint: (widget.type.toLowerCase() == "password")
-            ? Text("*************")
+            ? const Text("*************")
             : (widget.type.toLowerCase() == "email")
             ? Text("example@example.com")
             : (widget.type.toLowerCase() == "name")
@@ -57,14 +57,14 @@ class _CustomFieldState extends State<CustomField> {
                     });
                   },
                   child: SvgPicture.asset(
+                    isShowed ? AppAssets.show_on : AppAssets.show_off,
                     height: 20,
                     width: 20,
-                    isShowed ? AppAssets.show_on : AppAssets.show_off,
-                    color: AppColors.primary,
+                    colorFilter: const ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
                   ),
                 ),
               )
-            : SizedBox.shrink(),
+            : const SizedBox.shrink(),
       ),
     );
   }
