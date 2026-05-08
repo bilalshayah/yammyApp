@@ -32,6 +32,10 @@ class _CustomFieldState extends State<CustomField> {
             ? Text("*************")
             : (widget.type.toLowerCase() == "email")
             ? Text("example@example.com")
+            : (widget.type.toLowerCase() == "name")
+            ? Text("Ahmad Asaad")
+            : (widget.type.toLowerCase() == "date")
+            ? Text("DD /MM /YY")
             : Text("+ 123 456 789"),
         hintStyle: AppTextStyles.hint(),
         border: OutlineInputBorder(
