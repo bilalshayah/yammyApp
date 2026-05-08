@@ -37,7 +37,6 @@ class FoodCard extends StatelessWidget {
 
           const SizedBox(height: 8),
 
-          // name + rating + price
           Row(
             children: [
               Text(name, style: AppTextStyles.title),
