@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: AppTheme.lightTheme,
         initialRoute: "/login",
+        //AppRoutes
         onGenerateRoute: (settings) => AppRouter.generateRoute(settings));
   }
 }
