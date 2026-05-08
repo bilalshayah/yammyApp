@@ -1,25 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:yammyapp/core/theme/app_theme.dart';
+import 'package:yammyapp/core/widgets/navigation_bar.dart';
+import 'package:yammyapp/core/widgets/search_bar.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Color(0xffF5CB58),
+      statusBarBrightness: Brightness.dark,
+    ),
+  );
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home:Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter Demo'),
-        ),
-        body:  Center(
-          child: Text('Hello World'),
+      debugShowCheckedModeBanner: false,
+      theme: AppTheme.lightTheme,
+      home: Scaffold(
+        bottomNavigationBar: NavBar(currentIndex: 0),
+        body: Container(
+          margin: const EdgeInsets.symmetric(horizontal: 36),
+          child: Column(
+            children: [
+              const SizedBox(height: 60),
+              CustomSearchBar(
+                controller: TextEditingController(),
+                onFilterTap: () => print(3),
+              )
+            ],
+          ),
         ),
       ),
     );
   }
 }
-

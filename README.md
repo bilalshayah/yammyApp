@@ -3,8 +3,6 @@
 
 <div align="center">
 
-
-
 [![Flutter](https://img.shields.io/badge/Flutter-3.x-blue.svg)](https://flutter.dev)
 [![Architecture](https://img.shields.io/badge/Architecture-Clean%20Architecture-green.svg)]()
 [![State Management](https://img.shields.io/badge/State%20Management-BLoC-orange.svg)]()
@@ -89,6 +87,6 @@ lib/
 │
 ├── injection_container.dart # Dependency Injection Setup
 └── main.dart   
-
+```
 
 Built with ❤️ using Flutter & Clean Architecture.
