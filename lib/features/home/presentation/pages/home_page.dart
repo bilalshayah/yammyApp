@@ -1,82 +1,150 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../core/widgets/customNavigationDrawer.dart';
+import '../widgets/customBestSellerCard.dart';
 import '../../../../core/widgets/category_item.dart';
 import '../../../../core/widgets/food_card.dart';
 import '../../../../core/widgets/search_bar.dart';
-import '../../domain/repository/homeRepository.dart';
-import '../bloc/home_bloc.dart';
-import '../bloc/home_event.dart';
-import '../bloc/home_state.dart';
 import '../../../../core/widgets/navigation_bar.dart';
 import '../../../../core/constants/constants.dart';
+import '../widgets/buildHeaderIcon.dart';
+import '../widgets/buildPromoBanner.dart';
+import '../widgets/buildSectionTitle.dart';
+import '../widgets/customRecommendItem.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
+  static const List<String> localImages = [
+    'assets/images/burger.jpg',
+    'assets/images/chicken sandwish.webp',
+    'assets/images/food1.jpg',
+    'assets/images/food2.jpg',
+    'assets/images/kobah.jpg',
+    'assets/images/pizza.jpg',
+    'assets/images/shawrma.jpg',
+    'assets/images/soshi.jpg',
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => HomeBloc(
-        homeRepository: context.read<HomeRepository>(),
-      )..add(LoadHomeDataEvent()),
+    final size = MediaQuery.of(context).size;
+    return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColors.background,
+        endDrawer: const CustomNavigationDrawer(),
+        backgroundColor: AppColors.activeCategory,
         bottomNavigationBar: const NavBar(currentIndex: 0),
         body: SafeArea(
-          child: BlocBuilder<HomeBloc, HomeState>(
-            builder: (context, state) {
-              if (state is HomeLoading) {
-                return const Center(child: CircularProgressIndicator());
-              } else if (state is HomeLoaded) {
-                return SingleChildScrollView(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.fromLTRB(
+                    size.width * 0.05,
+                    size.height * 0.04,
+                    size.width * 0.05,
+                    size.height * 0.015,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.all(20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("Good Morning", style: AppTextStyles.title),
-                            const SizedBox(height: 15),
-                            CustomSearchBar(controller: TextEditingController()),
-                          ],
-                        ),
-                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: CustomSearchBar(controller: TextEditingController()),
+                          ),
+                          SizedBox(width: size.width * 0.02),
+                          buildHeaderIcon(Icons.notifications_none_outlined, () {}),
+                          SizedBox(width: size.width * 0.015),
+                          buildHeaderIcon(Icons.shopping_bag_outlined, () {}),
+                          SizedBox(width: size.width * 0.015),
+                          Builder(
+                            builder: (context) => buildHeaderIcon(Icons.person_outline, () {
+                              Scaffold.of(context).openEndDrawer();
+                            }),
+                            ),
 
-                      const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        child: Categories(),
+                        ],
                       ),
-
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                        child: Text("Best Seller", style: AppTextStyles.title),
+                      SizedBox(height: size.height * 0.02),
+                      Text(
+                        "Good Morning",
+                        style: AppTextStyles.title(color: AppColors.textWhite),
                       ),
-
-                      ListView.builder(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: state.bestSellers.length,
-                        itemBuilder: (context, index) {
-                          final item = state.bestSellers[index];
-                          return FoodCard(
-                            imageUrl: item.image,
-                            name: item.name,
-                            description: item.description,
-                            price: item.effectivePrice,
-                            rating: item.rating,
-                          );
-                        },
+                      SizedBox(height: size.height * 0.005),
+                      Text(
+                        "Rise and shine! It's breakfast time",
+                        style: AppTextStyles.h3(color: AppColors.textOrange),
                       ),
                     ],
                   ),
-                );
-              } else if (state is HomeError) {
-                return Center(child: Text(state.message));
-              }
-              return const SizedBox();
-            },
+                ),
+                Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(size.width * 0.1),
+                      topRight: Radius.circular(size.width * 0.1),
+                    ),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: size.width * 0.04,
+                      vertical: size.height * 0.025,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Categories(),
+                        SizedBox(height: size.height * 0.025),
+                        buildSectionTitle("Best Seller"),
+                        SizedBox(height: size.height * 0.012),
+                        SizedBox(
+                          height: size.height * 0.18,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: localImages.length,
+                            itemBuilder: (context, index) {
+                              return Container(
+                                width: size.width * 0.28,
+                                margin: EdgeInsets.only(right: size.width * 0.04),
+                                child: CustomBestSellerCard(
+                                  imageUrl: localImages[index],
+                                  price: 10.99 + index,
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                        SizedBox(height: size.height * 0.03),
+                        buildPromoBanner(context),
+                        SizedBox(height: size.height * 0.03),
+                        buildSectionTitle("Recommend"),
+                        SizedBox(height: size.height * 0.012),
+                        SizedBox(
+                          height: size.height * 0.25,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
+                            itemCount: 5,
+                            itemBuilder: (context, index) {
+                              return Container(
+                                margin: EdgeInsets.only(right: size.width * 0.04),
+                                child: CustomRecommendItem(
+                                  imageUrl: localImages[(index + 4) % localImages.length],
+                                  price: 12.50,
+                                  rating: "4.8",
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

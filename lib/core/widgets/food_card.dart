@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../constants/appTextStyle.dart';
-import '../constants/app_colors.dart';
+import 'package:yammyapp/core/constants/constants.dart';
 
 class FoodCard extends StatelessWidget {
   final String imageUrl;
@@ -22,7 +20,7 @@ class FoodCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 36),
+      margin: EdgeInsets.symmetric(horizontal: 36),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -39,11 +37,12 @@ class FoodCard extends StatelessWidget {
 
           const SizedBox(height: 8),
 
+          // name + rating + price
           Row(
             children: [
               Text(name, style: AppTextStyles.title()),
               const SizedBox(width: 8),
-              const Text('•', style: TextStyle(color: AppColors.primary)),
+              Text('•', style: TextStyle(color: AppColors.primary)),
               const SizedBox(width: 8),
               // rating badge
               Container(

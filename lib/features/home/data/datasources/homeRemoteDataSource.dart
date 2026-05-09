@@ -17,25 +17,53 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
 
   @override
   Future<List<CategoryModel>> getCategories() async {
-    final response = await dio.get('$baseUrl/categories');
-    return (response.data['data'] as List)
-        .map((e) => CategoryModel.fromJson(e))
-        .toList();
+    try {
+      final response = await dio.get('$baseUrl/categories/');
+
+      // التعديل هنا: السيرفر يعيد Map مباشرة
+      if (response.data is Map<String, dynamic>) {
+        final category = CategoryModel.fromJson(response.data);
+        return [category]; // نلفه في قائمة ليقبله الـ Repository والـ Bloc
+      } else if (response.data['data'] != null) {
+        // احتياطاً إذا كان الرد مغلف بكلمة data مستقبلاً
+        final List data = response.data['data'];
+        return data.map((e) => CategoryModel.fromJson(e)).toList();
+      }
+      return [];
+    } catch (e) {
+      print("❌ API Error in getCategories: $e");
+      rethrow;
+    }
   }
 
   @override
   Future<List<MenuItemModel>> getBestSellers() async {
-    final response = await dio.get('$baseUrl/menu-items/best-sellers');
-    return (response.data as List)
-        .map((e) => MenuItemModel.fromJson(e))
-        .toList();
+    try {
+      final response = await dio.get('$baseUrl/menu-items/best-sellers');
+
+      // السيرفر يعيد كائناً واحداً للمنتج
+      if (response.data is Map<String, dynamic>) {
+        final item = MenuItemModel.fromJson(response.data);
+        return [item];
+      }
+      return [];
+    } catch (e) {
+      print("❌ API Error in getBestSellers: $e");
+      rethrow;
+    }
   }
 
   @override
   Future<List<MenuItemModel>> getAllMenuItems() async {
-    final response = await dio.get('$baseUrl/menu-items/?limit=10&page=1');
-    return (response.data['data'] as List)
-        .map((e) => MenuItemModel.fromJson(e))
-        .toList();
+    try {
+      final response = await dio.get('$baseUrl/menu-items/?limit=10&page=1');
+      return (response.data['data'] as List)
+          .map((e) => MenuItemModel.fromJson(e))
+          .toList();
+    }
+    catch (e) {
+    print("❌ API Error in getCategories: $e");
+    rethrow;
+    }
   }
 }

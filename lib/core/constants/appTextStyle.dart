@@ -29,7 +29,7 @@ class AppTextStyles {
       _league(24, FontWeight.w600, AppColors.textPrimary, color);
 
   static TextStyle h3({Color? color}) =>
-      _league(14, FontWeight.w300, AppColors.textPrimary, color);
+      _league(16, FontWeight.w300, AppColors.textPrimary, color);
 
   static TextStyle label({Color? color}) =>
       _league(12, FontWeight.w400, AppColors.textPrimary, color);
@@ -57,7 +57,7 @@ class AppTextStyles {
 
 
   static TextStyle title({Color? color}) =>
-      _poppins(18, FontWeight.w600, AppColors.textPrimary, color);
+      _poppins(26, FontWeight.w600, AppColors.textPrimary, color);
 
   static TextStyle yumQuick({Color? color}) =>
       _poppins(34.85, FontWeight.w800, AppColors.textPrimary, color);
