@@ -7,8 +7,9 @@ import 'package:yammyapp/core/constants/app_colors.dart';
 class CustomField extends StatefulWidget {
   final TextEditingController controller;
   final String type;
+  final String? Function(String?)? validator;
 
-  const CustomField({super.key, required this.controller, required this.type});
+  const CustomField({super.key, required this.controller, required this.type, this.validator});
   @override
   State<CustomField> createState() => _CustomFieldState();
 }
@@ -19,6 +20,7 @@ class _CustomFieldState extends State<CustomField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      validator: widget.validator,
       controller: widget.controller,
       keyboardType: (widget.type.toLowerCase() == "email")
           ? TextInputType.emailAddress

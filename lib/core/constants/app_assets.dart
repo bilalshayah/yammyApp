@@ -21,5 +21,6 @@ class AppAssets {
   static const String card = 'assets/icons/Card.svg';
   static const String delivery = 'assets/icons/delivery.svg';
   static const String transfer = 'assets/icons/transfer.svg';
+  static const String fingerprint = 'assets/icons/fingerprint.svg';
 
 }

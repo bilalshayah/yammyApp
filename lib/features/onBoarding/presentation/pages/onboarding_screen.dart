@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:yammyapp/core/constants/appTextStyle.dart';
 import 'package:yammyapp/core/constants/app_assets.dart';
-import 'package:yammyapp/core/constants/app_colors.dart';
-import 'package:yammyapp/core/widgets/custom_button.dart';
 import 'package:yammyapp/features/launch/presentation/pages/welcome_screen.dart';
 import 'package:yammyapp/features/onBoarding/presentation/widgets/background_image.dart';
 import 'package:yammyapp/features/onBoarding/presentation/widgets/bottom_shape.dart';
