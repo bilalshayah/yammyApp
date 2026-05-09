@@ -61,7 +61,7 @@ class WelcomeScreen extends StatelessWidget {
               text: 'Log In',
               color: AppColors.secondary,
               function: () {
-                // navigate to login
+                Navigator.pushNamed(context, "/login");
               },
             ),
 
@@ -72,7 +72,7 @@ class WelcomeScreen extends StatelessWidget {
               text: 'Sign Up',
               color: Colors.transparent,
               function: () {
-                // navigate to signup
+                Navigator.pushNamed(context, "/register");
               },
             ),
 
