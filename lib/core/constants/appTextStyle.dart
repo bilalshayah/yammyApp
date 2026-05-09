@@ -2,71 +2,66 @@ import 'package:flutter/material.dart';
 import 'app_colors.dart';
 
 class AppTextStyles {
-  // League Spartan
-  static const TextStyle h1 = TextStyle(
-    fontFamily: 'LeagueSpartan',
-    fontWeight: FontWeight.w700,
-    fontSize: 24,
-    color: AppColors.textPrimary,
-  );
 
-  static const TextStyle h2 = TextStyle(
-    fontFamily: 'LeagueSpartan',
-    fontWeight: FontWeight.w600,
-    fontSize: 20,
-    color: AppColors.textPrimary,
-  );
+  static TextStyle _league(double size, FontWeight weight, Color defaultColor, Color? customColor) {
+    return TextStyle(
+      fontFamily: 'LeagueSpartan',
+      fontSize: size,
+      fontWeight: weight,
+      color: customColor ?? defaultColor,
+    );
+  }
 
-  static const TextStyle label = TextStyle(
-    fontFamily: 'LeagueSpartan',
-    fontWeight: FontWeight.w400,
-    fontSize: 12,
-    color: AppColors.textPrimary,
-  );
-  static const TextStyle buttonText = TextStyle(
-    fontFamily: 'LeagueSpartan',
-    fontWeight: FontWeight.w500,
-    fontSize: 24,
-    color: AppColors.textPrimary,
-  );
+  static TextStyle _poppins(double size, FontWeight weight, Color defaultColor, Color? customColor) {
+    return TextStyle(
+      fontFamily: 'Poppins',
+      fontSize: size,
+      fontWeight: weight,
+      color: customColor ?? defaultColor,
+    );
+  }
 
-  static const TextStyle subtitle = TextStyle(
-    fontFamily: 'LeagueSpartan',
-    fontSize: 12,
-    fontWeight: FontWeight.w300,
-    color: AppColors.textOrange,
-  );
-  static const TextStyle searchHint = TextStyle(
-    fontFamily: 'LeagueSpartan',
-    fontSize: 12,
-    fontWeight: FontWeight.w300,
-    color: AppColors.textGray,
-  );
-  static const TextStyle price = TextStyle(
-    fontFamily: 'LeagueSpartan',
-    fontSize: 18,
-    fontWeight: FontWeight.w400,
-    color: AppColors.primary,
-  );
-  static const TextStyle rate = TextStyle(
-    fontFamily: 'LeagueSpartan',
-    fontSize: 12,
-    fontWeight: FontWeight.w400,
-    color: AppColors.background,
-  );
-  static const TextStyle hint = TextStyle(
-    fontFamily: 'LeagueSpartan',
-    fontSize: 20,
-    fontWeight: FontWeight.w400,
-    color: AppColors.textPrimary,
-  );
 
-  // Poppins
+  static TextStyle h1({Color? color}) =>
+      _league(28, FontWeight.w700, AppColors.textPrimary, color);
 
-  static const TextStyle title = TextStyle(
-    fontFamily: 'Poppins',
-    fontSize: 18,
-    fontWeight: FontWeight.w600,
-    color: AppColors.textPrimary,
-  );
+  static TextStyle h2({Color? color}) =>
+      _league(24, FontWeight.w600, AppColors.textPrimary, color);
+
+  static TextStyle h3({Color? color}) =>
+      _league(14, FontWeight.w300, AppColors.textPrimary, color);
+
+  static TextStyle label({Color? color}) =>
+      _league(12, FontWeight.w400, AppColors.textPrimary, color);
+
+  static TextStyle buttonText({Color? color}) =>
+      _league(20, FontWeight.w500, AppColors.textPrimary, color);
+
+  static TextStyle skip({Color? color}) =>
+      _league(20, FontWeight.w600, AppColors.textWhite, color);
+
+  static TextStyle description({Color? color}) =>
+      _league(14, FontWeight.w500, AppColors.textWhite, color);
+
+  static TextStyle subtitle({Color? color}) =>
+      _league(12, FontWeight.w300, AppColors.textOrange, color);
+
+  static TextStyle searchHint({Color? color}) =>
+      _league(12, FontWeight.w300, AppColors.textGray, color);
+
+  static TextStyle price({Color? color}) =>
+      _league(18, FontWeight.w400, AppColors.primary, color);
+
+  static TextStyle rate({Color? color}) =>
+      _league(12, FontWeight.w400, AppColors.background, color);
+
+  static TextStyle hint({Color? color}) =>
+      _league(20, FontWeight.w400, AppColors.textPrimary, color);
+
+
+  static TextStyle title({Color? color}) =>
+      _poppins(18, FontWeight.w600, AppColors.textPrimary, color);
+
+  static TextStyle yumQuick({Color? color}) =>
+      _poppins(34.85, FontWeight.w800, AppColors.textPrimary, color);
 }

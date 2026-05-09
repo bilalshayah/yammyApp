@@ -36,7 +36,7 @@ class CategoryItem extends StatelessWidget {
             ),
           ),
         ),
-        Text(label, style: AppTextStyles.label),
+        Text(label, style: AppTextStyles.label()),
       ],
     );
   }
