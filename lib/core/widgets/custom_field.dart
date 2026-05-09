@@ -33,7 +33,7 @@ class _CustomFieldState extends State<CustomField> {
             : (widget.type.toLowerCase() == "email")
             ? Text("example@example.com")
             : Text("+ 123 456 789"),
-        hintStyle: AppTextStyles.hint,
+        hintStyle: AppTextStyles.hint(),
         border: OutlineInputBorder(
           borderSide: BorderSide.none,
           borderRadius: BorderRadius.circular(13),
