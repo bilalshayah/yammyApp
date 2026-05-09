@@ -32,7 +32,7 @@ class CategoryItem extends StatelessWidget {
             padding: const EdgeInsets.all(12),
             child: SvgPicture.asset(
               icon,
-              colorFilter: ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
+              colorFilter: const ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
             ),
           ),
         ),

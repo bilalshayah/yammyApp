@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: AppTheme.lightTheme,
-        initialRoute: "/fingerprint",
+        initialRoute: "/launch",
         //AppRoutes
         onGenerateRoute: (settings) => AppRouter.generateRoute(settings));
   }
