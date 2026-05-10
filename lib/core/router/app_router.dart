@@ -3,6 +3,7 @@ import 'package:yammyapp/features/auth/presentation/pages/fingerprints_screen.da
 import 'package:yammyapp/features/auth/presentation/pages/setPasswordScreen.dart';
 import 'package:yammyapp/features/launch/presentation/pages/splash_screen.dart';
 import 'package:yammyapp/features/onBoarding/presentation/pages/onboarding_screen.dart';
+import 'package:yammyapp/features/orders/presentation/pages/my_orders.dart';
 
 
 
@@ -18,6 +19,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) =>  SetPasswordScreen());
       case '/fingerprint':
         return MaterialPageRoute(builder: (_) =>  FingerprintScreen());
+      case '/myOrders':
+        return MaterialPageRoute(builder: (_) =>  MyOrdersScreen());
 
 
       default:

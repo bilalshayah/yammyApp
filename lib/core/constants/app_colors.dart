@@ -17,5 +17,6 @@ class AppColors {
     0xFF252525,
   ); // gray (description)
   static const Color textWhite = Color(0xFFFFFFFF); // white
+  static const Color textWhite2 = Color(0xFFF8F8F8); // white
   static const Color divider = Color(0xFFFFD8C7); // divider
 }

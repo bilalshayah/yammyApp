@@ -15,8 +15,8 @@ class Ordermodel {
 
   factory Ordermodel.fromJson(Map<String, dynamic> json) {
     return Ordermodel(
-      addressId: json['restaurant_id'],
-      restaurantId: json['address_id'],
+      addressId: json['address_id'],
+      restaurantId: json['restaurant_id'],
       paymentMethod: json['payment_method'],
       notes: json['notes'],
       couponCode: json['coupon_code'],

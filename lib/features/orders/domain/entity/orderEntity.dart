@@ -4,7 +4,7 @@ class OrderEntity {
   final String paymentMethod;
   final String? notes;
   final String? couponCode;
-  
+
   OrderEntity({
     required this.addressId,
     required this.restaurantId,
