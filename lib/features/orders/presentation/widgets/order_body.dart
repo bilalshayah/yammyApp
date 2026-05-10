@@ -69,8 +69,8 @@ Widget build(BuildContext context) {
                           ),
                           Column(
                             children: [
-                              Text(state.orders[index].addressId),
-                              Text(state.orders[index].paymentMethod),
+                              Text(state.orders[index].orderNumber),
+                              Text(state.orders[index].status),
                             ],
                           ),
                         ],

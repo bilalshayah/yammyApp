@@ -8,6 +8,19 @@ class Orderdatasource {
   // getting all orders
   Future<List<Ordermodel>> getOrders() async {
     final response = await dioClient.dio.get(AppEndpoints.orders);
-    return (response.data['data'] as List).map((e) => Ordermodel.fromJson(e)).toList();
+    return (response.data['data'] as List)
+        .map((e) => Ordermodel.fromJson(e))
+        .toList();
+  }
+
+  // get one order by id
+  Future<Ordermodel> getOrderDetails(String id) async {
+    final response = await dioClient.dio.get(AppEndpoints.order(id));
+    return Ordermodel.fromJson(response.data['data']);
+  }
+
+  // cancel order
+  Future<void> cancelOrder(String id) async {
+     await dioClient.dio.patch(AppEndpoints.cancelOrder(id));
   }
 }

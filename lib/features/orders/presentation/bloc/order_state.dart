@@ -24,3 +24,26 @@ final class OrderFailed extends OrderState {
   @override
   List<Object> get props => [message];
 }
+
+final class OrderDetailsSuccess extends OrderState {
+  final OrderEntity orderDetails;
+  const OrderDetailsSuccess({required this.orderDetails});
+  @override
+  List<Object> get props => [orderDetails];
+}
+
+final class OrderDetailsFailed extends OrderState {
+  final String message;
+  const OrderDetailsFailed({required this.message});
+  @override
+  List<Object> get props => [message];
+}
+
+final class OrderCanceledSuccessfully extends OrderState {}
+
+final class OrderCanceledFailed extends OrderState {
+  final String message;
+  const OrderCanceledFailed({required this.message});
+  @override
+  List<Object> get props => [message];
+}
