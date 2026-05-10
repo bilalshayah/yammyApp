@@ -131,14 +131,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             child: RichText(
                               textAlign: TextAlign.center,
                               text: TextSpan(
-                                text: 'By continuing, you agree to \n',
-                                style: AppTextStyles.subtitle(color: Colors.black),
+                                text: 'By continuing, you agree to \n',style: TextStyle(color: Colors.black,fontSize: 12),
                                 children: [
                                   TextSpan(
                                     text: 'Terms of Use ',
                                     style: AppTextStyles.subtitle(color: AppColors.primary).copyWith(fontWeight: FontWeight.bold),
                                   ),
-                                  const TextSpan(text: 'and ', style: TextStyle(color: Colors.black)),
+                                  const TextSpan(text: 'and ',style: TextStyle(color: Colors.black,fontSize: 12)),
                                   TextSpan(
                                     text: 'Privacy Policy.',
                                     style: AppTextStyles.subtitle(color: AppColors.primary).copyWith(fontWeight: FontWeight.bold),
@@ -170,7 +169,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         SizedBox(height: context.screenHeight * 0.04),
                         Column(
                           children: [
-                            Text("or sign up with", style: AppTextStyles.h3()),
+                            Text("or sign up with"),
                             SizedBox(height: context.screenHeight * 0.02),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-
-import '../constants/app_colors.dart';
 import '../constants/appTextStyle.dart';
+import '../constants/app_colors.dart';
+import 'app_theme.dart';
 
 class AppTheme {
   static ThemeData get lightTheme => ThemeData(
-        fontFamily: 'LeagueSpartan',   // default font
+        fontFamily: 'LeagueSpartan',
         primaryColor: AppColors.primary,
         scaffoldBackgroundColor: AppColors.background,
         colorScheme: ColorScheme.light(
@@ -20,7 +20,6 @@ class AppTheme {
           bodySmall: AppTextStyles.label(),
           titleMedium: AppTextStyles.subtitle(),
           titleLarge: AppTextStyles.title(), // Poppins SemiBold
-
         ),
       );
 }

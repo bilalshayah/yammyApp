@@ -10,12 +10,15 @@ class AppColors {
   static const Color active = Color(0xFFF5CB58); // active category
   static const Color activeCategory = Color(0xFFF5CB58); // active category
   static const Color orange2 = Color(0xFFFFDECF); // active category
+  static const Color body = Color(0xFFF5CB58); // active category
+  static const Color orange = Color(0xFFFFDECF); // orange
   static const Color textOrange = Color(
     0xFFE95322,
   ); // orange text (Popular, price)
   static const Color textGray = Color(
-    0xFF676767,
+    0xFF252525,
   ); // gray (description)
-  static const Color textWhite = Color(0xFFF8F8F8); // white
+  static const Color textWhite = Color(0xFFFFFFFF); // white
+  static const Color textWhite2 = Color(0xFFF8F8F8); // white
   static const Color divider = Color(0xFFFFD8C7); // divider
 }

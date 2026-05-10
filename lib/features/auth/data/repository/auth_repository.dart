@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:yammyapp/core/constants/constants.dart';
 import '../../../../core/api_helper/dio_client.dart';
 import '../models/user_model.dart';
 
@@ -11,7 +12,7 @@ class AuthRepository {
   Future<UserModel> login(String email, String password) async {
     try {
       final response = await dioClient.dio.post(
-        'auth/login',
+        AppEndpoints.login,
         data: {"email": email, "password": password},
       );
 
@@ -30,7 +31,7 @@ class AuthRepository {
   }) async {
     try {
       final response = await dioClient.dio.post(
-        'auth/register',
+        AppEndpoints.register,
         data: {
           "email": email,
           "first_name": firstName,
@@ -42,6 +43,19 @@ class AuthRepository {
       );
     } on DioException catch (e) {
       throw e.response?.data['message'] ?? "Registration failed";
+    }
+  }
+  Future<void> resetPassword({required String token, required String newPassword}) async {
+    try {
+      final response = await dioClient.dio.post(
+        AppEndpoints.resetPassword,
+        data: {
+          'token': token,
+          'new_password': newPassword,
+        },
+      );
+    } on DioException catch (e) {
+      throw e.response?.data['message'] ?? "Something went wrong";
     }
   }
 }

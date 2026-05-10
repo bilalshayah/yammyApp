@@ -1,16 +1,17 @@
 import 'package:dio/dio.dart';
+import 'package:yammyapp/core/constants/app_endpoints.dart';
 
 class AuthService {
   final Dio _dio = Dio(
     BaseOptions(
-      baseUrl: 'https://yammybackend-production.up.railway.app/api/v1/',
+      baseUrl: AppEndpoints.baseUrl,
       headers: {'Accept': 'application/json'},
     ),
   );
 
   Future<Response> login(String email, String password) async {
     return await _dio.post(
-      'auth/login',
+      AppEndpoints.login,
       data: {
         'email': email,
         'password': password,
@@ -26,7 +27,7 @@ class AuthService {
     required String phone,
   }) async {
     return await _dio.post(
-      'auth/register',
+      AppEndpoints.register,
       data: {
         "email": email,
         "first_name": firstName,

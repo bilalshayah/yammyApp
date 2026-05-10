@@ -1,9 +1,10 @@
 import 'package:dio/dio.dart';
+import 'package:yammyapp/core/constants/constants.dart';
 
 class DioClient {
   final Dio dio = Dio(
     BaseOptions(
-      baseUrl: 'https://yammybackend-production.up.railway.app/api/v1/',
+      baseUrl: AppEndpoints.baseUrl,
       connectTimeout: const Duration(seconds: 15),
         headers: {
           "Content-Type": "application/json",

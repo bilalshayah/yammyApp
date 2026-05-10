@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'app_colors.dart';
 
 class AppTextStyles {
-
-  static TextStyle _league(double size, FontWeight weight, Color defaultColor, Color? customColor) {
+  static TextStyle _league(
+      double size,
+      FontWeight weight,
+      Color defaultColor,
+      Color? customColor,
+      ) {
     return TextStyle(
       fontFamily: 'LeagueSpartan',
       fontSize: size,
@@ -12,7 +16,12 @@ class AppTextStyles {
     );
   }
 
-  static TextStyle _poppins(double size, FontWeight weight, Color defaultColor, Color? customColor) {
+  static TextStyle _poppins(
+      double size,
+      FontWeight weight,
+      Color defaultColor,
+      Color? customColor,
+      ) {
     return TextStyle(
       fontFamily: 'Poppins',
       fontSize: size,
@@ -20,7 +29,6 @@ class AppTextStyles {
       color: customColor ?? defaultColor,
     );
   }
-
 
   static TextStyle h1({Color? color}) =>
       _league(28, FontWeight.w700, AppColors.textPrimary, color);
@@ -36,6 +44,14 @@ class AppTextStyles {
 
   static TextStyle buttonText({Color? color}) =>
       _league(20, FontWeight.w500, AppColors.textPrimary, color);
+
+  static TextStyle skip({Color? color}) =>
+      _league(20, FontWeight.w600, AppColors.textWhite, color);
+
+  static TextStyle activetab({Color? color}) =>
+      _league(17, FontWeight.w500, AppColors.textWhite, color);
+  static TextStyle tab({Color? color}) =>
+      _league(17, FontWeight.w400, AppColors.textWhite, color);
 
   static TextStyle description({Color? color}) =>
       _league(14, FontWeight.w500, AppColors.textWhite, color);
@@ -54,7 +70,6 @@ class AppTextStyles {
 
   static TextStyle hint({Color? color}) =>
       _league(20, FontWeight.w400, AppColors.textPrimary, color);
-
 
   static TextStyle title({Color? color}) =>
       _poppins(18, FontWeight.w600, AppColors.textPrimary, color);

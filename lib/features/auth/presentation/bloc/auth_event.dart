@@ -22,3 +22,8 @@ class RegisterSubmitted extends AuthEvent {
     required this.phone,
   });
 }
+class ResetPasswordSubmitted extends AuthEvent {
+  final String token;
+  final String newPassword;
+  ResetPasswordSubmitted({required this.token, required this.newPassword});
+}

@@ -15,6 +15,7 @@ class CustomField extends StatefulWidget {
     required this.validator,
     required this.controller,
   });
+
   @override
   State<CustomField> createState() => _CustomFieldState();
 }

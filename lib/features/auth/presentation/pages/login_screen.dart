@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yammyapp/features/auth/presentation/pages/fingerprints_screen.dart';
+import 'package:yammyapp/features/auth/presentation/pages/setPasswordScreen.dart';
 import 'package:yammyapp/features/auth/presentation/widgets/auth_input.dart';
 import '../../../../core/constants/appTextStyle.dart';
 import '../../../../core/constants/app_appbar.dart';
@@ -93,7 +95,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(height: context.screenHeight * 0.01),
                         Text(
                           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-                          style: AppTextStyles.h3(color: Colors.black),
                         ),
                         SizedBox(height: context.screenHeight * 0.03),
                         AuthInput(
@@ -111,12 +112,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         Align(
                           alignment: Alignment.centerRight,
                           child: TextButton(
-                            onPressed: () {},
+                            onPressed: () => Navigator.pushReplacement(
+                                context, MaterialPageRoute(builder: (_) => SetPasswordScreen(token: "string",))),
                             child: Text(
                               "Forget Password",
-                              style: AppTextStyles.h3(
-                                color: AppColors.textOrange,
-                              ),
+                              style: AppTextStyles.h3(color: AppColors.textOrange).copyWith(fontWeight: FontWeight.bold),
                             ),
                           ),
                         ),
@@ -129,8 +129,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             if (_formKey.currentState!.validate()) {
                               context.read<AuthBloc>().add(
                                 LoginSubmitted(
-                                  emailCont.text.trim(),
-                                  passCont.text.trim(),
+                                  emailCont.text,
+                                  passCont.text,
                                 ),
                               );
                              // Navigator.pushReplacementNamed(context, '/home');
@@ -142,18 +142,20 @@ class _LoginScreenState extends State<LoginScreen> {
                           alignment: Alignment.center,
                           child: Text(
                             "or sign up with",
-                            style: AppTextStyles.h3(),
                           ),
                         ),
                         SizedBox(height: context.screenHeight * 0.02),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
+                          children: [
                             IconContainer(path: "assets/icons/Gmail.svg"),
                             SizedBox(width: 20),
                             IconContainer(path: "assets/icons/Facebook.svg"),
                             SizedBox(width: 20),
-                            IconContainer(path: "assets/icons/Mark.svg"),
+                            GestureDetector(
+                                onTap: () => Navigator.push(context,
+                                    MaterialPageRoute(builder: (_) => FingerprintScreen())),
+                                child: IconContainer(path: "assets/icons/Mark.svg")),
                           ],
                         ),
                         SizedBox(height: context.screenHeight * 0.03),
