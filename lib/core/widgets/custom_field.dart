@@ -5,10 +5,16 @@ import 'package:yammyapp/core/constants/app_assets.dart';
 import 'package:yammyapp/core/constants/app_colors.dart';
 
 class CustomField extends StatefulWidget {
-  final TextEditingController controller;
   final String type;
+  final TextEditingController controller;
+  final FormFieldValidator validator;
 
-  const CustomField({super.key, required this.controller, required this.type});
+  const CustomField({
+    super.key,
+    required this.type,
+    required this.validator,
+    required this.controller,
+  });
   @override
   State<CustomField> createState() => _CustomFieldState();
 }
@@ -19,14 +25,21 @@ class _CustomFieldState extends State<CustomField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      validator: widget.validator,
       controller: widget.controller,
-      keyboardType: (widget.type.toLowerCase() == "email")
+      keyboardType:
+          (widget.type.toLowerCase() == "email")
           ? TextInputType.emailAddress
           : (widget.type.toLowerCase() == "password")
           ? TextInputType.visiblePassword
+          : (widget.type.toLowerCase() == "name")
+          ? TextInputType.text
           : const TextInputType.numberWithOptions(),
       obscureText: (widget.type.toLowerCase()=="password")? !isShowed : false,
       decoration: InputDecoration(
+        errorStyle: TextStyle(
+          color: AppColors.textOrange
+        ),
         contentPadding: const EdgeInsets.symmetric(horizontal: 16),
         hint: (widget.type.toLowerCase() == "password")
             ? const Text("*************")
