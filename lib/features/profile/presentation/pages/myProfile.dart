@@ -6,6 +6,7 @@ import 'package:yammyapp/core/constants/app_colors.dart';
 import '../../../../core/constants/app_appbar.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/custom_field.dart';
+import '../../../../core/widgets/navigation_bar.dart';
 import '../bloc/profileBloc.dart';
 import '../bloc/profileEvent.dart';
 import '../bloc/profileState.dart';
@@ -30,6 +31,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return BlocProvider(
       create: (context) => ProfileBloc(Dio())..add(GetProfileData()),
       child: Scaffold(
+        bottomNavigationBar: const NavBar(currentIndex: 0),
         appBar: AppAppBar(text: "My profile"),
         body: BlocBuilder<ProfileBloc, ProfileState>(
           builder: (context, state) {

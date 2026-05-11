@@ -100,7 +100,7 @@ Widget _buildAvatarSection(String? avatarUrl, Size size) {
         width: size.width * 0.3,
         height: size.width * 0.3,
         decoration: BoxDecoration(
-          shape: BoxShape.circle,
+         borderRadius: BorderRadius.circular(10),
           border: Border.all(color: AppColors.primary, width: size.width * 0.005),
           image: DecorationImage(
             image: (avatarUrl != null && avatarUrl.isNotEmpty)
