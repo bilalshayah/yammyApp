@@ -1,4 +1,4 @@
-import '../../data/models/userModel.dart';
+import '../../../auth/data/models/user_model.dart';
 
 abstract class ProfileState {}
 class ProfileInitial extends ProfileState {}

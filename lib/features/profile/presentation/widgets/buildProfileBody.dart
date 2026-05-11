@@ -5,7 +5,7 @@ import '../../../../core/constants/appTextStyle.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/custom_field.dart';
-import '../../data/models/userModel.dart';
+import '../../../auth/data/models/user_model.dart';
 
 Widget buildProfileBody({
   required UserModel user,
@@ -20,14 +20,14 @@ Widget buildProfileBody({
     child: Stack(
       children: [
         Container(
-          height: size.height * 0.12,
+          height: size.height * 0.10,
           color: AppColors.activeCategory,
         ),
         Column(
           children: [
             Container(
               width: double.infinity,
-              margin: EdgeInsets.only(top: size.height * 0.025),
+              margin: EdgeInsets.only(top: size.height * 0.01),
               constraints: BoxConstraints(
                 minHeight: size.height * 0.85,
               ),
@@ -51,7 +51,7 @@ Widget buildProfileBody({
                         buildFieldLabel("Full Name", size),
                         CustomField(
                           controller: nameController, 
-                          type: "text",
+                          type: "text", validator: (value) {  },
                         ),
 
                         SizedBox(height: size.height * 0.025),
@@ -59,7 +59,7 @@ Widget buildProfileBody({
                         buildFieldLabel("Email", size),
                         CustomField(
                           controller: emailController, 
-                          type: "email",
+                          type: "email", validator: (value) {  },
                         ),
 
                         SizedBox(height: size.height * 0.025),
@@ -67,7 +67,7 @@ Widget buildProfileBody({
                         buildFieldLabel("Phone Number", size),
                         CustomField(
                           controller: phoneController, 
-                          type: "phone",
+                          type: "phone", validator: (value) {  },
                         ),
 
                         SizedBox(height: size.height * 0.05),

@@ -5,11 +5,17 @@ import 'package:yammyapp/core/constants/app_assets.dart';
 import 'package:yammyapp/core/constants/app_colors.dart';
 
 class CustomField extends StatefulWidget {
-  final TextEditingController controller;
   final String type;
-  final String? Function(String?)? validator;
+  final TextEditingController controller;
+  final FormFieldValidator validator;
 
-  const CustomField({super.key, required this.controller, required this.type, this.validator});
+  const CustomField({
+    super.key,
+    required this.type,
+    required this.validator,
+    required this.controller,
+  });
+
   @override
   State<CustomField> createState() => _CustomFieldState();
 }
@@ -22,25 +28,30 @@ class _CustomFieldState extends State<CustomField> {
     return TextFormField(
       validator: widget.validator,
       controller: widget.controller,
-      keyboardType: (widget.type.toLowerCase() == "email")
-          ? TextInputType.emailAddress
-          : (widget.type.toLowerCase() == "password")
-          ? TextInputType.visiblePassword
-          : TextInputType.numberWithOptions(),
+      keyboardType: TextInputType.text,
       obscureText: (widget.type.toLowerCase()=="password")? !isShowed : false,
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.symmetric(horizontal: 16),
+        errorStyle: TextStyle(
+          color: AppColors.textOrange
+        ),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16),
         hint: (widget.type.toLowerCase() == "password")
-            ? Text("*************")
+            ? const Text("*************")
             : (widget.type.toLowerCase() == "email")
             ? Text("example@example.com")
+            : (widget.type.toLowerCase() == "fname")
+            ? Text("Ahmad")
+            : (widget.type.toLowerCase() == "lname")
+            ? Text("Assad")
+            : (widget.type.toLowerCase() == "date")
+            ? Text("DD /MM /YY")
             : Text("+ 123 456 789"),
         hintStyle: AppTextStyles.hint(),
         border: OutlineInputBorder(
           borderSide: BorderSide.none,
           borderRadius: BorderRadius.circular(13),
         ),
-        fillColor: Color(0xffF3E9B5),
+        fillColor: AppColors.yellow2,
         filled: true,
         suffixIcon: (widget.type.toLowerCase() == "password")
             ? Padding(
@@ -55,12 +66,14 @@ class _CustomFieldState extends State<CustomField> {
                     });
                   },
                   child: SvgPicture.asset(
-                    isShowed ? AppAssets.eye : AppAssets.eye_off,
-                    color: AppColors.primary,
+                    isShowed ? AppAssets.show_on : AppAssets.show_off,
+                    height: 20,
+                    width: 20,
+                    colorFilter: const ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
                   ),
                 ),
               )
-            : SizedBox.shrink(),
+            : const SizedBox.shrink(),
       ),
     );
   }

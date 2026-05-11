@@ -8,7 +8,6 @@ class FingerprintDescription extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.',
-      style: AppTextStyles.h3(color: AppColors.textGray),
     );
   }
 }

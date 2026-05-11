@@ -38,7 +38,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             } else if (state is ProfileSuccess) {
               _nameController.text = "${state.user.firstName} ${state.user.lastName}";
               _emailController.text = state.user.email;
-              _phoneController.text = state.user.phone;
+              _phoneController.text = state.user.phone!;
 
               return buildProfileBody(
                 user: state.user,

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:local_auth/local_auth.dart';
+import 'package:yammyapp/core/constants/app_appbar.dart';
 import 'package:yammyapp/core/constants/constants.dart';
-import 'package:yammyapp/features/auth/presentation/widgets/fingerprint_body.dart';
-import 'package:yammyapp/features/auth/presentation/widgets/fingerprint_header.dart';
+import 'package:yammyapp/core/router/app_router.dart';
+import '../../../../../core/widgets/navigation_bar.dart';
+import '../../widgets/fingerprint_body.dart';
 
 class FingerprintScreen extends StatefulWidget {
   const FingerprintScreen({super.key});
@@ -16,15 +18,15 @@ class _FingerprintScreenState extends State<FingerprintScreen> {
   final LocalAuthentication _auth = LocalAuthentication();
 
 Future<void> _scanFingerprint() async {
-  final List<BiometricType> availableBiometrics = 
+  final List<BiometricType> availableBiometrics =
       await _auth.getAvailableBiometrics();
-  
+
   print('Available: $availableBiometrics');
 
   final bool authenticated = await _auth.authenticate(
     localizedReason: 'Scan your fingerprint',
     options: const AuthenticationOptions(
-      biometricOnly: false, 
+      biometricOnly: false,
       stickyAuth: true,
     ),
   );
@@ -33,10 +35,6 @@ Future<void> _scanFingerprint() async {
     if(!mounted) return;
   setState(() => _isScanned = true);
   await Future.delayed(const Duration(milliseconds: 500));
-  // Navigator.pushReplacement(
-  //   context,
-  //   MaterialPageRoute(builder: (context) => HomeScreen()),
-  // );
   } else {
     if(!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
@@ -56,16 +54,15 @@ void initState() {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.secondary,
-      body: Column(
-        children: [
-          FingerprintHeader(),
-          FingerprintBody(
-            isScanned: _isScanned,
-            
-          ),
-        ],
+      backgroundColor: AppColors.activeCategory,
+      extendBody: true,
+      bottomNavigationBar: const NavBar(),
+      appBar: AppAppBar(
+        function: () => Navigator.pop(context),
+          text: "Set Your Fingerprint"
       ),
+      body: FingerprintBody(
+            isScanned: _isScanned),
     );
   }
 }

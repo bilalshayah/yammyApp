@@ -1,32 +1,51 @@
+import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_storage/get_storage.dart';
+import 'package:yammyapp/core/storage/storage_service.dart';
 import 'package:yammyapp/features/profile/presentation/bloc/profileEvent.dart';
 import 'package:yammyapp/features/profile/presentation/bloc/profileState.dart';
 
-import '../../data/models/userModel.dart';
+import '../../../auth/data/models/user_model.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final Dio dio;
-  final GetStorage token =  GetStorage('token');
+  final StorageService storageService = StorageService();
+
   ProfileBloc(this.dio) : super(ProfileInitial()) {
     on<GetProfileData>((event, emit) async {
       emit(ProfileLoading());
       try {
+        final String? authToken = await storageService.getToken();
+
+        print("Token being sent: $authToken"); 
+
+        if (authToken == null) {
+          emit(ProfileError("الرجاء تسجيل الدخول أولاً"));
+          return;
+        }
+
         final response = await dio.get(
           'https://yammybackend-production.up.railway.app/api/v1/profile/',
           options: Options(
             headers: {
-              'Authorization': 'Bearer $token',
+              'Authorization': 'Bearer $authToken', 
               'Accept': 'application/json',
             },
           ),
         );
-        final user = UserModel.fromJson(response.data);
+
+        print("Profile Response Data: ${response.data}");
+
+        final userData = response.data['data'] ?? response.data;
+        
+        final user = UserModel.fromJson({'user': userData});
         emit(ProfileSuccess(user));
       } catch (e) {
         print("Error Details: $e");
-        emit(ProfileError(e.toString()));
+        if (e is DioException && e.response?.statusCode == 401) {
+           emit(ProfileError("انتهت صلاحية الجلسة، يرجى تسجيل الدخول مجدداً"));
+        } else {
+           emit(ProfileError(e.toString()));
+        }
       }
     });
   }

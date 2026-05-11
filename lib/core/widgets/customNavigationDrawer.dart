@@ -34,17 +34,33 @@ class CustomNavigationDrawer extends StatelessWidget {
               child: ListView(
                 padding: EdgeInsets.symmetric(horizontal: size.width * 0.05),
                 children: [
-                  _drawerItem(Icons.shopping_bag_outlined, "My Orders", size),
-                  _drawerItem(Icons.person_outline, "My Profile", size),
-                  _drawerItem(Icons.location_on_outlined, "Delivery Address", size),
-                  _drawerItem(Icons.payment_outlined, "Payment Methods", size),
-                  _drawerItem(Icons.contact_support_outlined, "Contact Us", size),
-                  _drawerItem(Icons.help_outline, "Help & FAQs", size),
-                  _drawerItem(Icons.settings_outlined, "Settings", size),
+                  _drawerItem(Icons.shopping_bag_outlined, "My Orders", size,() {
+
+                  },),
+                  _drawerItem(Icons.person_outline, "My Profile", size,() {
+                    Navigator.pushNamed(context, "/myProfile");
+                  },),
+                  _drawerItem(Icons.location_on_outlined, "Delivery Address", size,() {
+
+                  },),
+                  _drawerItem(Icons.payment_outlined, "Payment Methods", size,() {
+
+                  },),
+                  _drawerItem(Icons.contact_support_outlined, "Contact Us", size,() {
+
+                  },),
+                  _drawerItem(Icons.help_outline, "Help & FAQs", size,() {
+
+                  },),
+                  _drawerItem(Icons.settings_outlined, "Settings", size,() {
+
+                  },),
 
                   Divider(color: AppColors.textWhite,),
 
-                  _drawerItem(Icons.logout, "Log Out", size),
+                  _drawerItem(Icons.logout, "Log Out", size,() {
+
+                  },),
                 ],
               ),
             ),
@@ -89,7 +105,7 @@ class CustomNavigationDrawer extends StatelessWidget {
     );
   }
 
-  Widget _drawerItem(IconData icon, String title, Size size) {
+  Widget _drawerItem(IconData icon, String title, Size size,VoidCallback onTap) {
     return ListTile(
       leading: Icon(icon, color: Colors.white, size: size.width * 0.06),
       title: Text(
@@ -100,7 +116,7 @@ class CustomNavigationDrawer extends StatelessWidget {
           fontSize: 15,
         ),
       ),
-      onTap: () {},
+      onTap: onTap,
       contentPadding: EdgeInsets.symmetric(
         vertical: size.height * 0.002,
         horizontal: size.width * 0.02,
