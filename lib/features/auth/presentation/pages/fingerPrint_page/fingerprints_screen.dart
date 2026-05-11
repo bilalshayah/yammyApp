@@ -19,7 +19,7 @@ Future<void> _scanFingerprint() async {
   final List<BiometricType> availableBiometrics = 
       await _auth.getAvailableBiometrics();
   
-  print('Available: $availableBiometrics'); // check this in console
+  print('Available: $availableBiometrics');
 
   final bool authenticated = await _auth.authenticate(
     localizedReason: 'Scan your fingerprint',

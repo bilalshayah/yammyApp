@@ -14,6 +14,8 @@ class CustomSearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return TextFormField(
       controller: controller,
       decoration: InputDecoration(
@@ -23,24 +25,27 @@ class CustomSearchBar extends StatelessWidget {
         filled: true,
         border: OutlineInputBorder(
           borderSide: BorderSide.none,
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: BorderRadius.circular(size.width * 0.08),
         ),
         suffixIcon: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 3),
+          padding: EdgeInsets.symmetric(
+            horizontal: size.width * 0.01,
+            vertical: size.height * 0.004,
+          ),
           child: GestureDetector(
             onTap: onFilterTap,
             child: Container(
-              width: 20,
-              height: 20,
-              decoration: BoxDecoration(
+              width: size.width * 0.055,
+              height: size.width * 0.055,
+              decoration: const BoxDecoration(
                 color: AppColors.primary,
                 shape: BoxShape.circle,
               ),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
+                padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
                 child: SvgPicture.asset(
                   AppAssets.filter,
-                  colorFilter: ColorFilter.mode(
+                  colorFilter: const ColorFilter.mode(
                     AppColors.background,
                     BlendMode.srcIn,
                   ),

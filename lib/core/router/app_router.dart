@@ -7,6 +7,8 @@ import 'package:yammyapp/features/home/presentation/pages/home_page.dart';
 import 'package:yammyapp/features/launch/presentation/pages/splash_screen.dart';
 import 'package:yammyapp/features/onBoarding/presentation/pages/onboarding_screen.dart';
 
+import '../../features/profile/presentation/pages/myProfile.dart';
+
 
 
 class AppRouter {
@@ -27,7 +29,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) =>  SetPasswordScreen());
       case '/fingerprint':
         return MaterialPageRoute(builder: (_) =>  FingerprintScreen());
-
+      case '/myProfile':
+        return MaterialPageRoute(builder: (_) =>  ProfileScreen());
 
       default:
         return MaterialPageRoute(

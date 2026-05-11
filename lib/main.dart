@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: AppTheme.lightTheme,
-        initialRoute: "/launch",
+        initialRoute: "/myProfile",
         //AppRoutes
         onGenerateRoute: (settings) => AppRouter.generateRoute(settings));
   }
