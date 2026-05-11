@@ -4,7 +4,7 @@ class LoginSubmitted extends AuthEvent {
   final String email;
   final String password;
 
-  LoginSubmitted(this.email, this.password);
+  LoginSubmitted({required this.email, required this.password});
 }
 
 class RegisterSubmitted extends AuthEvent {
@@ -22,8 +22,17 @@ class RegisterSubmitted extends AuthEvent {
     required this.phone,
   });
 }
+
+class ForgetPasswordRequested extends AuthEvent {
+  final String email;
+  ForgetPasswordRequested({required this.email});
+}
+
 class ResetPasswordSubmitted extends AuthEvent {
   final String token;
   final String newPassword;
+
   ResetPasswordSubmitted({required this.token, required this.newPassword});
 }
+
+class LogoutRequested extends AuthEvent {}

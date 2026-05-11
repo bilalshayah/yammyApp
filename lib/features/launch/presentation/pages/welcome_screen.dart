@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:yammyapp/core/constants/constants.dart';
+import 'package:yammyapp/core/router/app_router.dart';
 import 'package:yammyapp/core/widgets/auth_button.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -61,7 +62,7 @@ class WelcomeScreen extends StatelessWidget {
               text: 'Log In',
               color: AppColors.secondary,
               function: () {
-                // navigate to login
+               Navigator.pushNamed(context, AppRouter.login);
               },
             ),
 
@@ -72,7 +73,7 @@ class WelcomeScreen extends StatelessWidget {
               text: 'Sign Up',
               color: Colors.transparent,
               function: () {
-                // navigate to signup
+                Navigator.pushNamed(context, AppRouter.register);
               },
             ),
 

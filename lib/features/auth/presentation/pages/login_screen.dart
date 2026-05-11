@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:yammyapp/features/auth/presentation/pages/fingerprints_screen.dart';
-import 'package:yammyapp/features/auth/presentation/pages/setPasswordScreen.dart';
+import 'package:yammyapp/core/router/app_router.dart';
 import 'package:yammyapp/features/auth/presentation/widgets/auth_input.dart';
 import '../../../../core/constants/appTextStyle.dart';
 import '../../../../core/constants/app_appbar.dart';
@@ -14,7 +13,6 @@ import '../../../../core/widgets/navigation_bar.dart';
 import '../bloc/auth_bloc.dart';
 import '../bloc/auth_event.dart';
 import '../bloc/auth_state.dart';
-import 'register_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -39,6 +37,21 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return BlocConsumer<AuthBloc, AuthState>(
       listener: (context, state) {
+        if (state is ForgetPasswordEmailSent) {
+          showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: const Text("تحقق من بريدك"),
+              content: const Text("لقد أرسلنا رابطاً لتغيير كلمة المرور إلى إيميلك. يرجى الضغط عليه من هناك."),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text("حسناً"),
+                ),
+              ],
+            ),
+          );
+        }
         if (state is AuthSuccess) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -46,8 +59,8 @@ class _LoginScreenState extends State<LoginScreen> {
               backgroundColor: Colors.green,
             ),
           );
+          Navigator.pushNamedAndRemoveUntil(context, AppRouter.home,(route) => false);
         }
-
         if (state is AuthError) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -61,7 +74,10 @@ class _LoginScreenState extends State<LoginScreen> {
         return Scaffold(
           backgroundColor: AppColors.activeCategory,
           extendBody: true,
-          appBar: AppAppBar(text: "Log In"),
+          appBar: AppAppBar(
+            text: "Log In",
+            function: () => Navigator.pop(context),
+          ),
           bottomNavigationBar: const NavBar(),
           body: Stack(
             children: [
@@ -98,7 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         SizedBox(height: context.screenHeight * 0.03),
                         AuthInput(
-                          title: "Email or Mobile Number",
+                          title: "Email",
                           type: "email",
                           controller: emailCont,
                           validator: (value) => Validators.validateEmail(value),
@@ -112,9 +128,19 @@ class _LoginScreenState extends State<LoginScreen> {
                         Align(
                           alignment: Alignment.centerRight,
                           child: TextButton(
-                            onPressed: () => Navigator.pushReplacement(
-                                context, MaterialPageRoute(builder: (_) => SetPasswordScreen(token: "string",))),
-                            child: Text(
+// داخل LoginScreen - زر Forget Password
+                            onPressed: () {
+                              if (emailCont.text.isNotEmpty) {
+                                // إرسال الحدث لطلب التوكين من السيرفر
+                                context.read<AuthBloc>().add(
+                                  ForgetPasswordRequested(email: emailCont.text),
+                                );
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(content: Text("الرجاء إدخال الإيميل أولاً")),
+                                );
+                              }
+                            },                            child: Text(
                               "Forget Password",
                               style: AppTextStyles.h3(color: AppColors.textOrange).copyWith(fontWeight: FontWeight.bold),
                             ),
@@ -129,11 +155,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             if (_formKey.currentState!.validate()) {
                               context.read<AuthBloc>().add(
                                 LoginSubmitted(
-                                  emailCont.text,
-                                  passCont.text,
+                                  email : emailCont.text,
+                                  password : passCont.text,
                                 ),
                               );
-                             // Navigator.pushReplacementNamed(context, '/home');
                             }
                           },
                         ),
@@ -153,19 +178,13 @@ class _LoginScreenState extends State<LoginScreen> {
                             IconContainer(path: "assets/icons/Facebook.svg"),
                             SizedBox(width: 20),
                             GestureDetector(
-                                onTap: () => Navigator.push(context,
-                                    MaterialPageRoute(builder: (_) => FingerprintScreen())),
+                                onTap: () => Navigator.pushNamed(context, AppRouter.fingerprint),
                                 child: IconContainer(path: "assets/icons/Mark.svg")),
                           ],
                         ),
                         SizedBox(height: context.screenHeight * 0.03),
                         GestureDetector(
-                          onTap: () => Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => RegisterScreen(),
-                            ),
-                          ),
+                          onTap: () => Navigator.pushNamed(context, AppRouter.register),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [

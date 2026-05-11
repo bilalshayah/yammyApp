@@ -18,6 +18,7 @@ class AppAssets {
   static const String show_off = 'assets/icons/Show Off.svg';
   static const String nextArrow = 'assets/icons/Next icon Arrow.svg';
   static const String card = 'assets/icons/Card.svg';
+  static const String cart = 'assets/icons/cart.svg';
   static const String delivery = 'assets/icons/delivery.svg';
   static const String transfer = 'assets/icons/transfer.svg';
   static const String fingerprint = 'assets/icons/fingerprint.svg';

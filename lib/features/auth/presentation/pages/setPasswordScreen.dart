@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yammyapp/core/constants/app_appbar.dart';
 import 'package:yammyapp/core/constants/constants.dart';
-import '../../../../core/extension.dart/context_extention.dart';
+import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/custom_field.dart';
 import '../../../../core/widgets/navigation_bar.dart';

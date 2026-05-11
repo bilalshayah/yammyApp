@@ -3,6 +3,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:yammyapp/core/constants/constants.dart';
 import 'package:yammyapp/features/launch/presentation/pages/welcome_screen.dart';
 
+import '../../../../core/router/app_router.dart';
+import '../../../../core/storage/storage_service.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -18,6 +21,7 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   void initState() {
     super.initState();
+    _checkAuth();
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1500),
@@ -32,11 +36,18 @@ class _SplashScreenState extends State<SplashScreen>
 
     // navigate to welcome after 3 seconds
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const WelcomeScreen()),
-      );
+      Navigator.pushReplacementNamed(
+          context, AppRouter.welcome);
     });
+    }
+
+  Future<void> _checkAuth() async {
+    final token = await StorageService().getToken();
+    if (token != null && token.isNotEmpty) {
+      Navigator.pushReplacementNamed(context, AppRouter.home);
+    } else {
+      Navigator.pushReplacementNamed(context, AppRouter.onboarding);
+    }
   }
 
   @override

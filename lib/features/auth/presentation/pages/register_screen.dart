@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yammyapp/core/validators/validators.dart';
+import 'package:yammyapp/features/auth/presentation/pages/fingerprints_screen.dart';
 import '../../../../core/constants/appTextStyle.dart';
 import '../../../../core/constants/app_appbar.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/extensions/context_extensions.dart';
+import '../../../../core/router/app_router.dart';
 import '../../../../core/widgets/icon_container.dart';
 import '../../../../core/widgets/auth_button.dart';
 import '../../../../core/widgets/navigation_bar.dart';
@@ -51,6 +53,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               backgroundColor: Colors.green,
             ),
           );
+          Navigator.pushNamedAndRemoveUntil(context, AppRouter.home,(route) => false);
         }
         if (state is AuthError) {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -95,13 +98,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       children: [
                         AuthInput(
                           title: "First name",
-                          type: "name",
+                          type: "fname",
                           controller: fNameCont,
                           validator: (value) => Validators.validateFullName(value),
                         ),
                         AuthInput(
                           title: "Last name",
-                          type: "name",
+                          type: "lname",
                           controller: lNameCont,
                           validator: (value) => Validators.validateFullName(value),
                         ),
@@ -178,12 +181,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 SizedBox(width: context.screenWidth * 0.05),
                                 const IconContainer(path: "assets/icons/Facebook.svg"),
                                 SizedBox(width: context.screenWidth * 0.05),
-                                const IconContainer(path: "assets/icons/Mark.svg"),
-                              ],
+                                GestureDetector(
+                                    onTap: () => Navigator.pushNamed(context, AppRouter.fingerprint),
+                                    child:  IconContainer(path: "assets/icons/Mark.svg")),
+                                ],
                             ),
                             SizedBox(height: context.screenHeight * 0.03),
                             GestureDetector(
-                              onTap: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => const LoginScreen())),
+                              onTap: () => Navigator.pushNamed(context, AppRouter.login),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
