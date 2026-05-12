@@ -3,10 +3,17 @@ import 'package:flutter_svg/svg.dart';
 import 'package:yammyapp/core/constants/constants.dart';
 
 class EmptyState extends StatelessWidget {
-  const EmptyState({super.key});
+  final int selectedTab;
+  const EmptyState({super.key, required this.selectedTab});
 
   @override
   Widget build(BuildContext context) {
+    final messages = [
+      "You don't have any\nactive orders at this\ntime",
+      "You don't have any\ncompleted orders yet",
+      "You don't have any\ncancelled orders",
+    ];
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -21,7 +28,7 @@ class EmptyState extends StatelessWidget {
         ),
         const SizedBox(height: 24),
         Text(
-          "You don't have any\nactive orders at this\ntime",
+          messages[selectedTab],
           textAlign: TextAlign.center,
           style: AppTextStyles.h2(color: AppColors.primary),
         ),

@@ -12,7 +12,7 @@ class CustomNavigationDrawer extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return Drawer(
-      backgroundColor: Colors.transparent,
+      backgroundColor: AppColors.orange2.withOpacity(0.6),
       elevation: 0,
       width: size.width * 0.75,
       shape: const RoundedRectangleBorder(

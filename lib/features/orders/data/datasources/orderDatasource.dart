@@ -28,9 +28,9 @@ class Orderdatasource {
   // create order
   Future<void> createOrder(Createordermodel order) async {
     await dioClient.dio.post(
-      AppEndpoints.createOrder(
-        order.toJson()
-      )
+      AppEndpoints.orders,
+      data:  order.toJson()
+      
     );
   }
 }
