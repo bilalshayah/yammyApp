@@ -1,3 +1,5 @@
+import 'package:yammyapp/features/orders/presentation/bloc/order_bloc.dart';
+
 class AppEndpoints {
   static const String baseUrl =
       'https://yammybackend-production.up.railway.app/api/v1';
@@ -33,6 +35,7 @@ class AppEndpoints {
   // Orders
   static const String orders = '$baseUrl/orders/';
   static String order(String id) => '$baseUrl/orders/$id';
+  static String createOrder(Map<String,dynamic>json) => '$baseUrl/orders/';
   static String cancelOrder(String id) => '$baseUrl/orders/$id/cancel';
   static String orderStatus(String id) => '$baseUrl/orders/$id/status';
 

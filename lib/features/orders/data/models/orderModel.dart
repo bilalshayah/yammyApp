@@ -2,6 +2,8 @@ class Ordermodel {
   final String id;
   final String orderNumber;
   final String status;
+  final String restaurantId;
+  final String addressId;
   final String? paymentStatus;
   final String? paymentMethod;
   final String? subtotal;
@@ -30,7 +32,7 @@ class Ordermodel {
     this.estimatedTime,
     this.couponCode,
     this.createdAt,
-    this.orderItems,
+    this.orderItems, required this.restaurantId, required this.addressId,
   });
 
   factory Ordermodel.fromJson(Map<String, dynamic> json) {
@@ -38,6 +40,8 @@ class Ordermodel {
       id: json['id'],
       orderNumber: json['order_number'],
       status: json['status'],
+      restaurantId:json['restaurant_id'],
+      addressId:json['restaurant_id'],
       paymentStatus: json['payment_status'],
       paymentMethod: json['payment_method'],
       subtotal: json['subtotal'],
@@ -51,8 +55,8 @@ class Ordermodel {
       createdAt: json['created_at'],
       orderItems: json['order_items'] != null
           ? (json['order_items'] as List)
-              .map((e) => OrderItemModel.fromJson(e))
-              .toList()
+                .map((e) => OrderItemModel.fromJson(e))
+                .toList()
           : null,
     );
   }

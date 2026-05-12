@@ -2,6 +2,8 @@ class OrderEntity {
   final String id;
   final String orderNumber;
   final String status;
+  final String restaurantId;
+  final String addressId;
   final String? paymentStatus;
   final String? paymentMethod;
   final String? subtotal;
@@ -24,7 +26,7 @@ class OrderEntity {
     this.notes,
     this.couponCode,
     this.createdAt,
-    this.orderItems,
+    this.orderItems, required this.restaurantId, required this.addressId,
   });
 }
 

@@ -1,4 +1,5 @@
 import 'package:yammyapp/features/orders/data/datasources/orderDatasource.dart';
+import 'package:yammyapp/features/orders/data/models/createOrderModel.dart';
 import 'package:yammyapp/features/orders/data/models/orderModel.dart';
 import 'package:yammyapp/features/orders/domain/entity/orderEntity.dart';
 import 'package:yammyapp/features/orders/domain/repository/orderRepository.dart';
@@ -23,6 +24,11 @@ class Orderrepositoryimp implements Orderrepository {
   Future<void> cancelOrder(String id) async {
     await orderdatasource.cancelOrder(id);
   }
+
+  @override
+  Future<void> createOrder(Createordermodel order) async {
+    await orderdatasource.createOrder(order);
+  }
 }
 
 // helper method to avoid repeating mapping code
@@ -35,6 +41,9 @@ OrderEntity _mapToEntity(Ordermodel e) {
     paymentMethod: e.paymentMethod,
     subtotal: e.subtotal,
     deliveryFee: e.deliveryFee,
+    addressId: e.addressId,
+    restaurantId: e.restaurantId,
+
     total: e.total,
     notes: e.notes,
     couponCode: e.couponCode,

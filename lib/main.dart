@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yammyapp/features/orders/domain/usecases/cancelOrderUseCase.dart';
+import 'package:yammyapp/features/orders/domain/usecases/createOrderUseCase.dart';
 import 'package:yammyapp/features/orders/domain/usecases/getOrderDetailsUseCase.dart';
 import 'core/api_helper/dio_client.dart';
 import 'core/router/app_router.dart';
@@ -25,8 +26,11 @@ void main() {
   final dataSource = Orderdatasource(dioClient);
   final repository = Orderrepositoryimp(orderdatasource: dataSource);
   final getOrdersUseCase = Getorderusecase(repository: repository);
-  final getOrderDetailsUseCase = GetOrderDetailsUseCase(orderrepository: repository);
+  final getOrderDetailsUseCase = GetOrderDetailsUseCase(
+    orderrepository: repository,
+  );
   final cancelorderusecase = Cancelorderusecase(orderrepository: repository);
+  final createorderUseCase = CreateorderUseCase(repository: repository);
   runApp(
     MultiBlocProvider(
       providers: [
@@ -35,9 +39,12 @@ void main() {
               AuthBloc(authRepository: AuthRepository(dioClient: dioClient)),
         ),
         BlocProvider(
-          create: (_) => OrderBloc(getorderusecase: getOrdersUseCase,
-              getOrderDetailsUseCase:getOrderDetailsUseCase,
-              cancelorderusecase: cancelorderusecase ),
+          create: (_) => OrderBloc(
+            getorderusecase: getOrdersUseCase,
+            getOrderDetailsUseCase: getOrderDetailsUseCase,
+            cancelorderusecase: cancelorderusecase,
+            createorderUseCase: createorderUseCase,
+          ),
         ),
       ],
       child: MyApp(),
@@ -50,26 +57,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-        providers: [
-          BlocProvider(
-            create: (context) =>
-                AuthBloc(
-                  authRepository: AuthRepository(
-                    dioClient: DioClient(),
-                  ),
-                ),
-          ),
-        ],
-        child: MaterialApp(
-            debugShowCheckedModeBanner: false,
-            theme: AppTheme.lightTheme,
-            initialRoute: "/home",
-            onGenerateRoute: (settings) => AppRouter.generateRoute
-              (
-                settings
-            )
-        )
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: AppTheme.lightTheme,
+      initialRoute: "/myOrders",
+      onGenerateRoute: (settings) => AppRouter.generateRoute(settings),
     );
   }
 }

@@ -22,6 +22,14 @@ final class GetOrderDetails extends OrderEvent {
 final class CancelOrder extends OrderEvent {
   final String id;
   const CancelOrder({required this.id});
-   @override
+  @override
   List<Object> get props => [id];
+}
+
+// create  order
+final class CreateOrder extends OrderEvent {
+  final Createordermodel order;
+  const CreateOrder({required this.order});
+  @override
+  List<Object> get props => [order];
 }
