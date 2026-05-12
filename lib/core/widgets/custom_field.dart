@@ -33,7 +33,9 @@ class _CustomFieldState extends State<CustomField> {
           ? TextInputType.emailAddress
           : (widget.type.toLowerCase() == "password")
           ? TextInputType.visiblePassword
-          : (widget.type.toLowerCase() == "name")
+          : (widget.type.toLowerCase() == "fname")
+          ? TextInputType.text:
+          (widget.type.toLowerCase() == "lname")
           ? TextInputType.text
           : const TextInputType.numberWithOptions(),
       obscureText: (widget.type.toLowerCase()=="password")? !isShowed : false,
