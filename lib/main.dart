@@ -60,7 +60,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      initialRoute: "/myOrders",
+      initialRoute: "/register",
       onGenerateRoute: (settings) => AppRouter.generateRoute(settings),
     );
   }
