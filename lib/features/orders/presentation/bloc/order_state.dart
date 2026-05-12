@@ -47,3 +47,11 @@ final class OrderCanceledFailed extends OrderState {
   @override
   List<Object> get props => [message];
 }
+
+final class CreateOrderSuccessfull extends OrderState {}
+final class CreateOrderFailed extends OrderState {
+  final String message;
+  const CreateOrderFailed({required this.message});
+  @override
+  List<Object> get props => [message];
+}

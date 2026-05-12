@@ -69,8 +69,7 @@ Widget build(BuildContext context) {
                           ),
                           Column(
                             children: [
-                              Text(state.orders[index].orderNumber),
-                              Text(state.orders[index].status),
+                              Text(state.orders[index].restaurantId),
                             ],
                           ),
                         ],

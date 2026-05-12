@@ -1,5 +1,6 @@
 import 'package:yammyapp/core/api_helper/dio_client.dart';
 import 'package:yammyapp/core/constants/constants.dart';
+import 'package:yammyapp/features/orders/data/models/createOrderModel.dart';
 import 'package:yammyapp/features/orders/data/models/orderModel.dart';
 
 class Orderdatasource {
@@ -21,6 +22,15 @@ class Orderdatasource {
 
   // cancel order
   Future<void> cancelOrder(String id) async {
-     await dioClient.dio.patch(AppEndpoints.cancelOrder(id));
+    await dioClient.dio.patch(AppEndpoints.cancelOrder(id));
+  }
+
+  // create order
+  Future<void> createOrder(Createordermodel order) async {
+    await dioClient.dio.post(
+      AppEndpoints.createOrder(
+        order.toJson()
+      )
+    );
   }
 }
