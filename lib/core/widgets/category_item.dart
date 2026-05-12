@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:yammyapp/core/constants/constants.dart';
+import '../constants/appTextStyle.dart';
+import '../constants/app_assets.dart';
+import '../constants/app_colors.dart';
 
 class CategoryItem extends StatelessWidget {
   final String icon;
@@ -16,26 +18,29 @@ class CategoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return Column(
-      spacing: 4,
       children: [
         AnimatedContainer(
           duration: const Duration(milliseconds: 300),
           curve: Curves.easeInOut,
-          width: 49,
-          height: 62,
+          width: size.width * 0.13,
+          height: size.height * 0.075,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30),
-            color: isActive ? AppColors.active : AppColors.yellow2,
+            borderRadius: BorderRadius.circular(size.width * 0.08),
+            color: isActive ? AppColors.activeCategory : AppColors.yellow2,
           ),
+
           child: Padding(
-            padding: const EdgeInsets.all(12),
+            padding: EdgeInsets.all(size.width * 0.03),
             child: SvgPicture.asset(
               icon,
               colorFilter: const ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
             ),
           ),
         ),
+        SizedBox(height: size.height * 0.005),
         Text(label, style: AppTextStyles.label()),
       ],
     );

@@ -23,4 +23,8 @@ class AppAssets {
   static const String transfer = 'assets/icons/transfer.svg';
   static const String fingerprint = 'assets/icons/fingerprint.svg';
   static const String emptyOrders = 'assets/icons/emptyOrders.svg';
+  static const String cookware = 'assets/icons/Cookware.svg';
+  static const String heart = 'assets/icons/Heart Icon.svg';
+  static const String bag = 'assets/icons/Vector.svg';
+  static const String notification = 'assets/icons/Notification Icon.svg';
 }

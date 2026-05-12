@@ -22,17 +22,18 @@ class UserModel {
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
-    final userData = json['user'];
+    // محاولة الحصول على البيانات من 'user' أو 'data' أو استخدام الـ json نفسه
+    final userData = json['user'] ?? json['data'] ?? json;
 
     return UserModel(
-      id: userData['id'] ?? '',
+      id: (userData['id'] ?? userData['_id'] ?? '').toString(),
       email: userData['email'] ?? '',
-      firstName: userData['first_name'] ?? '',
-      lastName: userData['last_name'] ?? '',
+      firstName: userData['first_name'] ?? userData['firstName'] ?? '',
+      lastName: userData['last_name'] ?? userData['lastName'] ?? '',
       phone: userData['phone'],
       avatar: userData['avatar'],
       role: userData['role'] ?? 'CUSTOMER',
-      accessToken: json['accessToken'] ?? '',
+      accessToken: json['accessToken'] ?? json['token'] ?? '',
       refreshToken: json['refreshToken'] ?? '',
     );
   }

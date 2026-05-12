@@ -8,14 +8,16 @@ class NavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return Container(
-      height: 61,
+      height: size.height * 0.075,
       width: double.infinity,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: AppColors.primary,
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(30),
-          topRight: Radius.circular(30),
+          topLeft: Radius.circular(size.width * 0.08),
+          topRight: Radius.circular(size.width * 0.08),
         ),
       ),
       child: Row(
@@ -57,14 +59,15 @@ class _NavItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     final bool isActive = index == currentIndex;
 
     return GestureDetector(
       onTap: () => _navigate(context, index),
       child: SvgPicture.asset(
         icon,
-        width: 27,
-        height: 24,
+        width: size.width * 0.075,
+        height: size.height * 0.03,
         colorFilter: ColorFilter.mode(
           isActive
               ? AppColors.textWhite

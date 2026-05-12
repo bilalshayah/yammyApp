@@ -16,7 +16,7 @@ class IconContainer extends StatelessWidget {
       width: 50,
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-          color: color ?? AppColors.orange2,
+          color: color ?? AppColors.orange,
           borderRadius: BorderRadius.all(Radius.circular(radius ?? 16))
       ),
       child: SvgIcon(path: path),

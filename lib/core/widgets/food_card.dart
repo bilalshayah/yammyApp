@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../constants/appTextStyle.dart';
-import '../constants/app_colors.dart';
+import 'package:yammyapp/core/constants/constants.dart';
 
 class FoodCard extends StatelessWidget {
   final String imageUrl;
@@ -21,43 +19,48 @@ class FoodCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 36),
+      margin: EdgeInsets.symmetric(horizontal: size.width * 0.1),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // image
           ClipRRect(
-            borderRadius: BorderRadius.circular(30),
+            borderRadius: BorderRadius.circular(size.width * 0.08),
             child: Image.network(
               imageUrl,
               width: double.infinity,
-              height: 200,
+              height: size.height * 0.25,
               fit: BoxFit.cover,
             ),
           ),
 
-          const SizedBox(height: 8),
+          SizedBox(height: size.height * 0.01),
 
           // name + rating + price
           Row(
             children: [
               Text(name, style: AppTextStyles.title()),
-              const SizedBox(width: 8),
+              SizedBox(width: size.width * 0.02),
               const Text('•', style: TextStyle(color: AppColors.primary)),
-              const SizedBox(width: 8),
+              SizedBox(width: size.width * 0.02),
               // rating badge
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                padding: EdgeInsets.symmetric(
+                  horizontal: size.width * 0.02,
+                  vertical: size.height * 0.0025,
+                ),
                 decoration: BoxDecoration(
                   color: AppColors.primary,
-                  borderRadius: BorderRadius.circular(30),
+                  borderRadius: BorderRadius.circular(size.width * 0.08),
                 ),
                 child: Row(
                   children: [
                     Text(rating.toString(), style: AppTextStyles.rate()),
-                    const SizedBox(width: 2),
-                    const Icon(Icons.star, color: Colors.amber, size: 13),
+                    SizedBox(width: size.width * 0.005),
+                    Icon(Icons.star, color: Colors.amber, size: size.width * 0.035),
                   ],
                 ),
               ),
@@ -66,11 +69,11 @@ class FoodCard extends StatelessWidget {
             ],
           ),
 
-          const SizedBox(height: 4),
+          SizedBox(height: size.height * 0.005),
 
           Text(description, style: AppTextStyles.subtitle()),
 
-          const Divider(height: 24, color: AppColors.divider),
+          Divider(height: size.height * 0.03, color: AppColors.divider),
         ],
       ),
     );

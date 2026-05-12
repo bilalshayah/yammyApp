@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yammyapp/core/validators/validators.dart';
-import 'package:yammyapp/features/auth/presentation/pages/fingerprints_screen.dart';
 import '../../../../core/constants/appTextStyle.dart';
 import '../../../../core/constants/app_appbar.dart';
 import '../../../../core/constants/app_colors.dart';

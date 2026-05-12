@@ -17,21 +17,26 @@ class CustomButton extends StatelessWidget {
   });
 
   @override
+  @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
       height: 55,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          padding: const EdgeInsets.fromLTRB(12, 8, 12, 8),
-          backgroundColor: color,
-          foregroundColor: textColor,
+          backgroundColor: color ?? AppColors.primary,
+          foregroundColor: textColor ?? AppColors.background,
+          elevation: 0,
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
           ),
         ),
         onPressed: function,
-        child: Text(text, style: AppTextStyles.buttonText(color: AppColors.textWhite)),
+        child: Text(
+          text,
+          style: AppTextStyles.buttonText(color: textColor ?? AppColors.textWhite),
+        ),
       ),
     );
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yammyapp/core/router/app_router.dart';
 import 'package:yammyapp/features/auth/presentation/widgets/auth_input.dart';
+import 'package:yammyapp/features/home/presentation/pages/home_page.dart';
 import '../../../../core/constants/appTextStyle.dart';
 import '../../../../core/constants/app_appbar.dart';
 import '../../../../core/constants/app_colors.dart';
@@ -59,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
               backgroundColor: Colors.green,
             ),
           );
-          Navigator.pushNamedAndRemoveUntil(context, AppRouter.home,(route) => false);
+          Navigator.pushNamed(context, "/home");
         }
         if (state is AuthError) {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -128,10 +129,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         Align(
                           alignment: Alignment.centerRight,
                           child: TextButton(
-// داخل LoginScreen - زر Forget Password
                             onPressed: () {
                               if (emailCont.text.isNotEmpty) {
-                                // إرسال الحدث لطلب التوكين من السيرفر
                                 context.read<AuthBloc>().add(
                                   ForgetPasswordRequested(email: emailCont.text),
                                 );
