@@ -1,10 +1,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:yammyapp/core/storage/storage_service.dart';
-import 'package:yammyapp/features/profile/presentation/bloc/profileEvent.dart';
-import 'package:yammyapp/features/profile/presentation/bloc/profileState.dart';
+import 'package:yammyapp/features/profile/presentation/bloc/profile/profileEvent.dart';
+import 'package:yammyapp/features/profile/presentation/bloc/profile/profileState.dart';
 
-import '../../../auth/data/models/user_model.dart';
+import '../../../../auth/data/models/user_model.dart';
+
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final Dio dio;
@@ -46,6 +47,33 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         } else {
            emit(ProfileError(e.toString()));
         }
+      }
+    });
+
+    on<UpdateProfileData>((event, emit) async {
+      emit(ProfileLoading());
+      try {
+        final String? authToken = await storageService.getToken();
+
+        final response = await dio.put(
+          'https://yammybackend-production.up.railway.app/api/v1/profile/',
+          data: event.updateData,
+          options: Options(
+            headers: {
+              'Authorization': 'Bearer $authToken',
+              'Accept': 'application/json',
+            },
+          ),
+        );
+
+        if (response.statusCode == 200) {
+          add(GetProfileData());
+        }
+      } catch (e) {
+        if (e is DioException) {
+          print("Server Error Data: ${e.response?.data}");
+        }
+        emit(ProfileError(e.toString()));
       }
     });
   }

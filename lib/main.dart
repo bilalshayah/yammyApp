@@ -64,7 +64,6 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: AppTheme.lightTheme,
-            initialRoute: "/home",
             onGenerateRoute: (settings) => AppRouter.generateRoute
               (
                 settings

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../../core/constants/constants.dart';
+import '../../features/contact/presentation/contact_screen.dart';
+import '../../help/presentation/pages/helpAndFaqsScreen.dart';
+import '../router/app_router.dart';
 
 class CustomNavigationDrawer extends StatelessWidget {
   const CustomNavigationDrawer({super.key});
@@ -41,16 +44,17 @@ class CustomNavigationDrawer extends StatelessWidget {
                     Navigator.pushNamed(context, "/myProfile");
                   },),
                   _drawerItem(Icons.location_on_outlined, "Delivery Address", size,() {
-
+                    FocusScope.of(context).unfocus();
+                    Navigator.pushNamed(context, AppRouter.myAddress);
                   },),
                   _drawerItem(Icons.payment_outlined, "Payment Methods", size,() {
 
                   },),
                   _drawerItem(Icons.contact_support_outlined, "Contact Us", size,() {
-
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const ContactUsScreen()));
                   },),
                   _drawerItem(Icons.help_outline, "Help & FAQs", size,() {
-
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const HelpAndFaqsScreen()));
                   },),
                   _drawerItem(Icons.settings_outlined, "Settings", size,() {
 

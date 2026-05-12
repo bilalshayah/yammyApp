@@ -1,11 +1,18 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../../../core/constants/appTextStyle.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/custom_field.dart';
 import '../../../auth/data/models/user_model.dart';
+import '../bloc/profile/profileBloc.dart';
+import '../bloc/profile/profileEvent.dart';
 
 Widget buildProfileBody({
   required UserModel user,
@@ -40,7 +47,7 @@ Widget buildProfileBody({
               ),
               child: Column(
                 children: [
-                  _buildAvatarSection(user.avatar, size),
+                  _buildAvatarSection(user.avatar, size,context),
 
                   SizedBox(height: size.height * 0.04),
                   Padding(
@@ -71,10 +78,23 @@ Widget buildProfileBody({
                         ),
 
                         SizedBox(height: size.height * 0.05),
-
                         CustomButton(
                           text: "Update Profile",
                           function: () {
+                            List<String> nameParts = nameController.text.trim().split(' ');
+                            String firstName = nameParts.isNotEmpty ? nameParts[0] : "";
+                            String lastName = nameParts.length > 1 ? nameParts.sublist(1).join(' ') : "";
+
+                            final Map<String, dynamic> data = {
+                              "first_name": firstName,
+                              "last_name": lastName,
+                              "phone": phoneController.text.trim(),
+                              "avatar": user.avatar ?? "",
+                            };
+
+                            context.read<ProfileBloc>().add(UpdateProfileData(data));
+
+                            FocusScope.of(context).unfocus();
                           },
                         ),
                         SizedBox(height: size.height * 0.06),
@@ -91,7 +111,7 @@ Widget buildProfileBody({
   );
 }
 
-Widget _buildAvatarSection(String? avatarUrl, Size size) {
+Widget _buildAvatarSection(String? avatarUrl, Size size,BuildContext context) {
   return Stack(
     alignment: Alignment.bottomRight,
     children: [
@@ -113,10 +133,27 @@ Widget _buildAvatarSection(String? avatarUrl, Size size) {
       Positioned(
         right: size.width * 0.012,
         bottom: size.width * 0.012,
-        child: CircleAvatar(
-          radius: size.width * 0.045,
-          backgroundColor: AppColors.primary,
-          child: Icon(Icons.camera_alt, color: Colors.white, size: size.width * 0.05),
+        child: GestureDetector(
+          onTap: () async {
+            final ImagePicker picker = ImagePicker();
+            final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+
+            if (image != null) {
+              File imageFile = File(image.path);
+              List<int> imageBytes = await imageFile.readAsBytes();
+
+              String base64Image = base64Encode(imageBytes);
+
+              print("Image Selected and converted to Base64");
+
+               context.read<ProfileBloc>().add(UpdateProfileData({"avatar": base64Image}));
+            }
+          },
+          child: CircleAvatar(
+            radius: size.width * 0.045,
+            backgroundColor: AppColors.primary,
+            child: Icon(Icons.camera_alt, color: Colors.white, size: size.width * 0.05),
+          ),
         ),
       ),
     ],

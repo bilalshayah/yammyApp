@@ -7,7 +7,7 @@ import 'package:yammyapp/core/constants/app_colors.dart';
 class CustomField extends StatefulWidget {
   final String type;
   final TextEditingController controller;
-  final FormFieldValidator validator;
+  final FormFieldValidator<String> validator;
 
   const CustomField({
     super.key,
@@ -23,29 +23,23 @@ class CustomField extends StatefulWidget {
 class _CustomFieldState extends State<CustomField> {
   bool isShowed = false;
 
+
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       validator: widget.validator,
       controller: widget.controller,
-      keyboardType: TextInputType.text,
-      obscureText: (widget.type.toLowerCase()=="password")? !isShowed : false,
+      keyboardType: widget.type.toLowerCase() == "email" 
+          ? TextInputType.emailAddress 
+          : widget.type.toLowerCase() == "phone" 
+              ? TextInputType.phone 
+              : TextInputType.text,
+      obscureText: (widget.type.toLowerCase() == "password") ? !isShowed : false,
       decoration: InputDecoration(
-        errorStyle: TextStyle(
-          color: AppColors.textOrange
-        ),
+        errorStyle: const TextStyle(color: AppColors.textOrange),
         contentPadding: const EdgeInsets.symmetric(horizontal: 16),
-        hint: (widget.type.toLowerCase() == "password")
-            ? const Text("*************")
-            : (widget.type.toLowerCase() == "email")
-            ? Text("example@example.com")
-            : (widget.type.toLowerCase() == "fname")
-            ? Text("Ahmad")
-            : (widget.type.toLowerCase() == "lname")
-            ? Text("Assad")
-            : (widget.type.toLowerCase() == "date")
-            ? Text("DD /MM /YY")
-            : Text("+ 123 456 789"),
+        hintText:" ",
         hintStyle: AppTextStyles.hint(),
         border: OutlineInputBorder(
           borderSide: BorderSide.none,

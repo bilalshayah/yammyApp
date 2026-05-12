@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:yammyapp/core/constants/svg_icon.dart';
+
 import 'appTextStyle.dart';
 import 'app_colors.dart';
 
 class AppAppBar extends AppBar {
   final String text;
+  final String? subTitle;
   final bool iSArrowIcon;
   final VoidCallback? function;
 
@@ -12,9 +14,10 @@ class AppAppBar extends AppBar {
     super.key,
     this.iSArrowIcon = true,
     required this.text,
+    this.subTitle,
     this.function,
   }) : super(
-    toolbarHeight: 150,
+    toolbarHeight: 120,
     backgroundColor: AppColors.activeCategory,
     elevation: 0,
     scrolledUnderElevation: 0,
@@ -30,9 +33,25 @@ class AppAppBar extends AppBar {
       ),
     )
         : null,
-    title: Text(
-      text,
-      style: AppTextStyles.h1(color: AppColors.background),
+    title: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(
+          text,
+          style: AppTextStyles.h1(color: AppColors.background),
+        ),
+        if (subTitle != null) ...[
+          const SizedBox(height: 4),
+          Text(
+            subTitle,
+            style: TextStyle(
+              color: AppColors.textOrange,
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+        ],
+      ],
     ),
   );
 }

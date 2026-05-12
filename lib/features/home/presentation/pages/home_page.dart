@@ -11,8 +11,15 @@ import '../widgets/buildPromoBanner.dart';
 import '../widgets/buildSectionTitle.dart';
 import '../widgets/customRecommendItem.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  late TextEditingController _searchController;
 
   static const List<String> localImages = [
     'assets/images/burger.jpg',
@@ -24,6 +31,18 @@ class HomePage extends StatelessWidget {
     'assets/images/shawrma.jpg',
     'assets/images/soshi.jpg',
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    _searchController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +69,7 @@ class HomePage extends StatelessWidget {
                       Row(
                         children: [
                           Expanded(
-                            child: CustomSearchBar(controller: TextEditingController()),
+                            child: CustomSearchBar(controller: _searchController),
                           ),
                           SizedBox(width: size.width * 0.02),
                           buildHeaderIcon(Icons.notifications_none_outlined, () {}),
