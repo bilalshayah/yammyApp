@@ -14,12 +14,12 @@ import 'features/orders/data/datasources/orderDatasource.dart';
 import 'features/orders/data/repository/orderRepositoryImp.dart';
 import 'features/orders/domain/usecases/getOrderUseCase.dart';
 import 'features/orders/presentation/bloc/order_bloc.dart';
-import 'firebase_options.dart';
+// import 'firebase_options.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
+    // options: DefaultFirebaseOptions.currentPlatform,
   );
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
@@ -65,7 +65,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      initialRoute: "/register",
+      initialRoute: "/myOrders",
       onGenerateRoute: (settings) => AppRouter.generateRoute(settings),
     );
   }

@@ -8,7 +8,6 @@ import '../../features/auth/presentation/pages/login_screen.dart';
 import '../../features/auth/presentation/pages/register_screen.dart';
 import '../../features/auth/presentation/pages/setPassword_page/setPasswordScreen.dart';
 import '../../features/home/presentation/pages/home_page.dart';
-import '../../features/home/presentation/pages/test_home_page.dart';
 import '../../features/launch/presentation/pages/splash_screen.dart';
 import '../../features/onBoarding/presentation/pages/onboarding_screen.dart';
 import '../../features/orders/presentation/pages/my_orders.dart';

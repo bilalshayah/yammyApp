@@ -16,7 +16,7 @@ class Createordermodel {
     'restaurant_id':restaurantId,
     'address_id':addressId,
     'payment_method':paymentMethod,
-    'nots':notes,
+    'notes':notes,
     'coupon_code':couponCode,
 
   };

@@ -35,7 +35,6 @@ class AppEndpoints {
   // Orders
   static const String orders = '$baseUrl/orders/';
   static String order(String id) => '$baseUrl/orders/$id';
-  static String createOrder(Map<String,dynamic>json) => '$baseUrl/orders/';
   static String cancelOrder(String id) => '$baseUrl/orders/$id/cancel';
   static String orderStatus(String id) => '$baseUrl/orders/$id/status';
 

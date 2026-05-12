@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:yammyapp/core/constants/constants.dart';
 import 'package:yammyapp/core/widgets/navigation_bar.dart';
-import 'package:yammyapp/features/orders/presentation/widgets/order_body.dart';
-import 'package:yammyapp/features/orders/presentation/widgets/order_header.dart';
+import 'package:yammyapp/features/orders/presentation/widgets/orderPage/order_body.dart';
+import 'package:yammyapp/features/orders/presentation/widgets/orderPage/order_header.dart';
 
 class MyOrdersScreen extends StatefulWidget {
   const MyOrdersScreen({super.key});
