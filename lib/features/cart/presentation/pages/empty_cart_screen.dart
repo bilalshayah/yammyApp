@@ -8,9 +8,9 @@ import 'package:yammyapp/core/widgets/auth_button.dart';
 import 'package:yammyapp/features/cart/presentation/widgets/cart_summary.dart';
 import '../widgets/cart_item.dart';
 
-class CartScreen extends StatelessWidget {
+class EmptyCartScreen extends StatelessWidget {
 
-  const CartScreen({super.key});
+  const EmptyCartScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -48,42 +48,22 @@ class CartScreen extends StatelessWidget {
                       children: [
                         CircleAvatar(
                             backgroundColor: AppColors.textWhite,
-                            radius: 23,
+                            radius: 30,
                             child: SvgIcon(path: AppAssets.cart)),
                         SizedBox(width: 15),
                         Text(
                           "Cart",
                           style: AppTextStyles.h2(color: AppColors.textWhite),
                         ),
+                        const SizedBox(height: 30),
+                        Text("Your cart is empty", style: AppTextStyles.price(color: AppColors.textWhite)),
+                        const SizedBox(height: 50),
                       ],
                     ),
                   ),
+                  const Icon(Icons.add_circle_outline, color: Colors.white, size: 80),
                   const SizedBox(height: 30),
-                  Divider(color: Colors.white, thickness: 1, indent: 30, endIndent: 30),
-                  Text("You have 2 items in the cart", style: AppTextStyles.price(color: AppColors.textWhite)),
-                  const SizedBox(height: 20),
-                  Expanded(
-                    child: ListView(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
-                      children: [
-                        CartItem("Strawberry Shake", "\$20.00", 2 , "assets/images/iceCream.png"),
-                        const Divider(color: Colors.white38, height: 30),
-                        CartItem("Broccoli Lasagna", "\$12.00", 1 , "assets/images/soshi.jpg" ),
-                        const Divider(color: Colors.white38, height: 30),
-                        CartSummary("Subtotal", "\$32.00"),
-                        CartSummary("Tax and Fees", "\$5.00"),
-                        CartSummary("Delivery", "\$3.00"),
-                        const Divider(color: Colors.white, thickness: 1, height: 40),
-                        CartSummary("Total", "\$40.00"),
-                        const SizedBox(height: 30),
-                        AuthButton(
-                          text: "Checkout",
-                          color: AppColors.activeCategory,
-                          function: (){},
-                          ),
-                      ]
-                    ),
-                  ),
+                  Text("Want To Add \nSomething?", style: AppTextStyles.h2(color: AppColors.textWhite)),
                 ],
               ),
             ),
