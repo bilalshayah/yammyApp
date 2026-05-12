@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,9 +14,13 @@ import 'features/orders/data/datasources/orderDatasource.dart';
 import 'features/orders/data/repository/orderRepositoryImp.dart';
 import 'features/orders/domain/usecases/getOrderUseCase.dart';
 import 'features/orders/presentation/bloc/order_bloc.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Color(0xffF5CB58),
