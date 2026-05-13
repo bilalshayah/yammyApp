@@ -27,21 +27,14 @@ class _SplashScreenState extends State<SplashScreen>
       duration: const Duration(milliseconds: 1500),
     );
 
-    _fadeAnimation = CurvedAnimation(
-      parent: _controller,
-      curve: Curves.easeIn,
-    );
+    _fadeAnimation = CurvedAnimation(parent: _controller, curve: Curves.easeIn);
 
     _controller.forward();
-
-    // navigate to welcome after 3 seconds
-    Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(
-          context, AppRouter.welcome);
-    });
-    }
+    _checkAuth();
+  }
 
   Future<void> _checkAuth() async {
+    await Future.delayed(Duration(seconds: 3));
     final token = await StorageService().getToken();
     if (token != null && token.isNotEmpty) {
       Navigator.pushReplacementNamed(context, AppRouter.home);
@@ -73,11 +66,11 @@ class _SplashScreenState extends State<SplashScreen>
                   children: [
                     TextSpan(
                       text: 'YUM',
-                      style: AppTextStyles.h1(color:AppColors.primary ),
+                      style: AppTextStyles.h1(color: AppColors.primary),
                     ),
                     TextSpan(
                       text: 'QUICK',
-                      style: AppTextStyles.h1(color: AppColors.textPrimary ),
+                      style: AppTextStyles.h1(color: AppColors.textPrimary),
                     ),
                   ],
                 ),
