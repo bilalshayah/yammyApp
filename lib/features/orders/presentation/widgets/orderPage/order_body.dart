@@ -3,9 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yammyapp/core/constants/constants.dart';
 import 'package:yammyapp/core/router/app_router.dart';
 import 'package:yammyapp/features/orders/presentation/bloc/order_bloc.dart';
-import 'package:yammyapp/features/orders/presentation/pages/cancelOrdreScreen.dart';
 import 'package:yammyapp/features/orders/presentation/pages/orderCard.dart';
-import 'package:yammyapp/features/orders/presentation/pages/leaveReviewScreen.dart';
 import 'package:yammyapp/features/orders/presentation/widgets/orderPage/orderTab_bar.dart';
 import 'package:yammyapp/features/orders/presentation/widgets/orderPage/orderTab_content.dart';
 
@@ -91,38 +89,36 @@ class _OrderBodyState extends State<OrderBody> {
                           order: order,
                           index: index,
                           onPrimaryAction: () {
+                            final itemName = (order.orderItems != null && order.orderItems!.isNotEmpty)
+    ? order.orderItems!.first.name
+    : 'Order';
 
-                            /////
-                            // if (isDelivered) {
-                            //   Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //       builder: (context) => Leavereviewscreen()
-                            //         image: 'assets/images/pizza.png',
-                            //         name: order.orderItems?.isNotEmpty == true
-                            //             ? order.orderItems!.first.name
-                            //             : 'Order',
-                                  
-                            //     ),
-                            //   );
-                            //   return;
-                            // }
-
-                            if (isCancelled) {
-                               Navigator.pushNamed(context,AppRouter.cancelOrder,arguments: order.id) ;
+                            ///
+                            if (isDelivered) {
+                              Navigator.pushNamed(
+                                context,
+                                AppRouter.leaveReview,
+                                arguments: {
+                                  'image': 'assets/images/pizza.png',
+                                  'name': itemName,
+                                },
+                              );
                             }
 
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    CancelOrderScreen(orderId: order.id),
-                              ),
-                            );
+                            else if (!isCancelled) {
+                              Navigator.pushNamed(
+                                context,
+                                AppRouter.cancelOrder,
+                                arguments: order.id,
+                              );
+                            }
+
+                           
                           },
                           onSecondaryAction: () {
-                            if (isDelivered || isCancelled) {
+                            if (isDelivered) {
                               // Navigator.pushNamed(context, AppRouter.cart);
+                            } else if (isCancelled) {
                               return;
                             }
 

@@ -1,4 +1,3 @@
-import 'package:yammyapp/features/orders/domain/entity/orderEntity.dart';
 
 class Ordermodel {
  final String id;

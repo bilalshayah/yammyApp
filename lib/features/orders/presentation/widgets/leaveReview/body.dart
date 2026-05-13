@@ -8,7 +8,12 @@ class Body extends StatefulWidget {
   final String image;
   final String name;
   final TextEditingController textEditingController;
-  Body({super.key, required this.image, required this.name, required this.textEditingController});
+  Body({
+    super.key,
+    required this.image,
+    required this.name,
+    required this.textEditingController,
+  });
 
   @override
   State<Body> createState() => _BodyState();
@@ -63,41 +68,53 @@ class _BodyState extends State<Body> {
             style: AppTextStyles.review(color: AppColors.textPrimary),
           ),
           SizedBox(height: 10),
-          OthersField(controller: widget.textEditingController, text: "Write Review..."),
-          SizedBox(height: 32,),
-         Row(
-  children: [
-    Expanded(
-      child: CustomButton(
-        text: 'Cancel',
-        color: AppColors.searchBg,
-        function: () => Navigator.pop(context),
-      ),
-    ),
-    const SizedBox(width: 8),
-    Expanded(
-      child: CustomButton(
-        text: 'Submit',
-        function: () {
-          if (_selectedRating == 0) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('Please select a rating first.')),
-            );
-            return;
-          }
-
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(
-                'Review captured: $_selectedRating stars.',
+          OthersField(
+            controller: widget.textEditingController,
+            text: "Write Review...",
+          ),
+          SizedBox(height: 32),
+          Row(
+            children: [
+              Expanded(
+                child: CustomButton(
+                  text: 'Cancel',
+                  color: AppColors.searchBg,
+                  function: () => Navigator.pop(context),
+                ),
               ),
-            ),
-          );
-        },
-      ),
-    ),
-  ],
-)
+              const SizedBox(width: 8),
+              Expanded(
+                child: CustomButton(
+                  text: 'Submit',
+                  function: () async {
+                    if (_selectedRating == 0) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Please select a rating first.'),
+                        ),
+                      );
+                      return;
+                    }
+
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          'Review captured: $_selectedRating stars.',
+                        ),
+                        duration: const Duration(seconds: 2),
+                      ),
+                    );
+
+                    await Future.delayed(const Duration(seconds: 2));
+
+                    if (context.mounted) {
+                      Navigator.pop(context);
+                    }
+                  },
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );

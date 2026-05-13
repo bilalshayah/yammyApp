@@ -111,15 +111,22 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => MyOrdersScreen());
 
       case leaveReview:
-        final args = settings.arguments as Map<String, dynamic>? ?? {};
-        final image = args['image'] as String? ?? '';
-        final name = args['name'] as String? ?? '';
+        final args = settings.arguments;
+        final map = args is Map<String, dynamic> ? args : <String, dynamic>{};
+        final image = map['image'] as String? ?? '';
+        final name = map['name'] as String? ?? 'Order';
         return MaterialPageRoute(
           builder: (_) => Leavereviewscreen(image: image, name: name),
         );
 
       case cancelOrder:
-        final orderId = settings.arguments as String;
+        final orderId = settings.arguments;
+        if (orderId is! String || orderId.isEmpty) {
+         return MaterialPageRoute(
+            builder: (context) =>
+                const Scaffold(body: Center(child: Text("Invalid order id"))),
+          );
+        }
         return MaterialPageRoute(
           builder: (_) => CancelOrderScreen(orderId: orderId),
         );
