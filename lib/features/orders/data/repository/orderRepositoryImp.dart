@@ -43,6 +43,9 @@ OrderEntity _mapToEntity(Ordermodel e) {
     deliveryFee: e.deliveryFee,
     addressId: e.addressId,
     restaurantId: e.restaurantId,
+    tax: e.tax,
+    estimatedTime: e.estimatedTime,
+    discount: e.discount,
 
     total: e.total,
     notes: e.notes,

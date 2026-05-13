@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "496850234151",
+    "project_id": "yammyapp-8f632",
+    "storage_bucket": "yammyapp-8f632.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:496850234151:android:7f99c83c44a3772f429702",
+        "android_client_info": {
+          "package_name": "com.example.yammyapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqBiVz-bwan3OpCHt2sB4CXRuVFHEOQTQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

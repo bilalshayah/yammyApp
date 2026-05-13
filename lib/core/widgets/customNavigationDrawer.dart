@@ -15,9 +15,7 @@ class CustomNavigationDrawer extends StatelessWidget {
       backgroundColor: AppColors.orange2.withOpacity(0.6),
       elevation: 0,
       width: size.width * 0.75,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.zero,
-      ),
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
       child: Container(
         decoration: BoxDecoration(
           color: AppColors.textOrange,
@@ -37,34 +35,58 @@ class CustomNavigationDrawer extends StatelessWidget {
               child: ListView(
                 padding: EdgeInsets.symmetric(horizontal: size.width * 0.05),
                 children: [
-                  _drawerItem(Icons.shopping_bag_outlined, "My Orders", size,() {
-
-                  },),
-                  _drawerItem(Icons.person_outline, "My Profile", size,() {
+                  _drawerItem(
+                    Icons.shopping_bag_outlined,
+                    "My Orders",
+                    size,
+                    () {
+                      Navigator.pushNamed(context, "/myOrders");
+                    },
+                  ),
+                  _drawerItem(Icons.person_outline, "My Profile", size, () {
                     Navigator.pushNamed(context, "/myProfile");
-                  },),
-                  _drawerItem(Icons.location_on_outlined, "Delivery Address", size,() {
-                    FocusScope.of(context).unfocus();
-                    Navigator.pushNamed(context, AppRouter.myAddress);
-                  },),
-                  _drawerItem(Icons.payment_outlined, "Payment Methods", size,() {
+                  }),
+                  _drawerItem(
+                    Icons.location_on_outlined,
+                    "Delivery Address",
+                    size,
+                    () {
+                      FocusScope.of(context).unfocus();
+                      Navigator.pushNamed(context, AppRouter.myAddress);
+                    },
+                  ),
+                  _drawerItem(
+                    Icons.payment_outlined,
+                    "Payment Methods",
+                    size,
+                    () {},
+                  ),
+                  _drawerItem(
+                    Icons.contact_support_outlined,
+                    "Contact Us",
+                    size,
+                    () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ContactUsScreen(),
+                        ),
+                      );
+                    },
+                  ),
+                  _drawerItem(Icons.help_outline, "Help & FAQs", size, () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HelpAndFaqsScreen(),
+                      ),
+                    );
+                  }),
+                  _drawerItem(Icons.settings_outlined, "Settings", size, () {}),
 
-                  },),
-                  _drawerItem(Icons.contact_support_outlined, "Contact Us", size,() {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const ContactUsScreen()));
-                  },),
-                  _drawerItem(Icons.help_outline, "Help & FAQs", size,() {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const HelpAndFaqsScreen()));
-                  },),
-                  _drawerItem(Icons.settings_outlined, "Settings", size,() {
+                  Divider(color: AppColors.textWhite),
 
-                  },),
-
-                  Divider(color: AppColors.textWhite,),
-
-                  _drawerItem(Icons.logout, "Log Out", size,() {
-
-                  },),
+                  _drawerItem(Icons.logout, "Log Out", size, () {}),
                 ],
               ),
             ),
@@ -98,7 +120,9 @@ class CustomNavigationDrawer extends StatelessWidget {
           SizedBox(height: size.height * 0.015),
           Text(
             "hadel Brmo",
-            style: AppTextStyles.title(color: Colors.white).copyWith(fontSize: 20),
+            style: AppTextStyles.title(
+              color: Colors.white,
+            ).copyWith(fontSize: 20),
           ),
           Text(
             "hadelBrmo@email.com",
@@ -109,7 +133,12 @@ class CustomNavigationDrawer extends StatelessWidget {
     );
   }
 
-  Widget _drawerItem(IconData icon, String title, Size size,VoidCallback onTap) {
+  Widget _drawerItem(
+    IconData icon,
+    String title,
+    Size size,
+    VoidCallback onTap,
+  ) {
     return ListTile(
       leading: Icon(icon, color: Colors.white, size: size.width * 0.06),
       title: Text(

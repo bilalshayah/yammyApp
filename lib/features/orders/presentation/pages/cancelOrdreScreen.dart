@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yammyapp/core/constants/constants.dart';
 import 'package:yammyapp/core/widgets/navigation_bar.dart';
 import 'package:yammyapp/features/orders/presentation/bloc/order_bloc.dart';
+import 'package:yammyapp/features/orders/presentation/pages/orderCancelledScreen.dart';
 import 'package:yammyapp/features/orders/presentation/widgets/cancelOrder/body.dart';
 import 'package:yammyapp/features/orders/presentation/widgets/cancelOrder/header.dart';
 
@@ -25,19 +26,28 @@ class _CancelOrderScreenState extends State<CancelOrderScreen> {
     'Lorem ipsum dolor sit amet',
     'Lorem ipsum dolor sit amet',
   ];
+  @override
+  void dispose() {
+    _othersController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocListener<OrderBloc, OrderState>(
       listener: (context, state) {
         if (state is OrderCanceledSuccessfully) {
-          Navigator.pop(context);
-          context.read<OrderBloc>().add(GetOrderRequested());
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const OrderCancelledScreen(),
+            ),
+          );
         }
         if (state is OrderCanceledFailed) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.message)),
-          );
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(state.message)));
         }
       },
       child: Scaffold(

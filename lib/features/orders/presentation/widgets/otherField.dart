@@ -3,7 +3,8 @@ import 'package:yammyapp/core/constants/constants.dart';
 
 class OthersField extends StatelessWidget {
   final TextEditingController controller;
-  const OthersField({super.key, required this.controller});
+  final String text;
+  const OthersField({super.key, required this.controller, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +12,7 @@ class OthersField extends StatelessWidget {
       controller: controller,
       maxLines: 4,
       decoration: InputDecoration(
-        hintText: 'Others reason....',
+        hintText: text,
         hintStyle: AppTextStyles.h3(),
         fillColor: AppColors.secondary.withOpacity(0.3),
         filled: true,

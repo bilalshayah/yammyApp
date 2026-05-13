@@ -6,16 +6,16 @@ import 'package:yammyapp/features/orders/presentation/widgets/card/orderImage.da
 class OrderCard extends StatelessWidget {
   final OrderEntity order;
   final int index;
-  final VoidCallback onCancel;
+  final VoidCallback onPrimaryAction;
+  final VoidCallback onSecondaryAction;
 
   const OrderCard({
     super.key,
     required this.order,
     required this.index,
-    required this.onCancel,
+    required this.onPrimaryAction,
+    required this.onSecondaryAction,
   });
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,8 @@ class OrderCard extends StatelessWidget {
           Expanded(
             child: OrderDetails(
               order: order,
-              onCancel: onCancel,
+              onPrimaryAction: onPrimaryAction,
+              onSecondaryAction: onSecondaryAction,
             ),
           ),
         ],

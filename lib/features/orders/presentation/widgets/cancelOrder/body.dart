@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yammyapp/core/constants/constants.dart';
 import 'package:yammyapp/core/widgets/custom_button.dart';
-import 'package:yammyapp/features/orders/presentation/widgets/cancelOrder/otherField.dart';
+import 'package:yammyapp/features/orders/presentation/widgets/otherField.dart';
 import 'package:yammyapp/features/orders/presentation/widgets/cancelOrder/reasonItem.dart';
 
 class Body extends StatelessWidget {
@@ -54,7 +54,7 @@ class Body extends StatelessWidget {
                   const SizedBox(height: 16),
                   Text('Others', style: AppTextStyles.h3()),
                   const SizedBox(height: 8),
-                  OthersField(controller: othersController),
+                  OthersField(text:'Others reason...' ,controller: othersController),
                   const SizedBox(height: 24),
                   CustomButton(
                     text: 'Submit',

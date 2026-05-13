@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:yammyapp/core/constants/constants.dart';
+import 'package:yammyapp/core/router/app_router.dart';
 import 'package:yammyapp/features/orders/presentation/bloc/order_bloc.dart';
 import 'package:yammyapp/features/orders/presentation/pages/cancelOrdreScreen.dart';
 import 'package:yammyapp/features/orders/presentation/pages/orderCard.dart';
+import 'package:yammyapp/features/orders/presentation/pages/leaveReviewScreen.dart';
 import 'package:yammyapp/features/orders/presentation/widgets/orderPage/orderTab_bar.dart';
 import 'package:yammyapp/features/orders/presentation/widgets/orderPage/orderTab_content.dart';
 
@@ -79,16 +81,54 @@ class _OrderBodyState extends State<OrderBody> {
                     return ListView.builder(
                       itemCount: orderFilter.length,
                       itemBuilder: (context, index) {
+                        final order = orderFilter[index];
+                        final isDelivered = order.status == 'DELIVERED';
+                        final isCancelled =
+                            order.status == 'CANCELLED' ||
+                            order.status == 'REFUNDED';
+
                         return OrderCard(
-                          order: orderFilter[index],
+                          order: order,
                           index: index,
-                          onCancel: () {
+                          onPrimaryAction: () {
+
+                            /////
+                            // if (isDelivered) {
+                            //   Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //       builder: (context) => Leavereviewscreen()
+                            //         image: 'assets/images/pizza.png',
+                            //         name: order.orderItems?.isNotEmpty == true
+                            //             ? order.orderItems!.first.name
+                            //             : 'Order',
+                                  
+                            //     ),
+                            //   );
+                            //   return;
+                            // }
+
+                            if (isCancelled) {
+                               Navigator.pushNamed(context,AppRouter.cancelOrder,arguments: order.id) ;
+                            }
+
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => CancelOrderScreen(
-                                  orderId: orderFilter[index].id,
-                                ),
+                                builder: (context) =>
+                                    CancelOrderScreen(orderId: order.id),
+                              ),
+                            );
+                          },
+                          onSecondaryAction: () {
+                            if (isDelivered || isCancelled) {
+                              // Navigator.pushNamed(context, AppRouter.cart);
+                              return;
+                            }
+
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('Tracking is not available yet.'),
                               ),
                             );
                           },

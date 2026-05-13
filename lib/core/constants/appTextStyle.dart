@@ -38,6 +38,8 @@ class AppTextStyles {
 
   static TextStyle h3({Color? color}) =>
       _league(14, FontWeight.w300, AppColors.textPrimary, color);
+  static TextStyle review({Color? color}) =>
+      _league(25, FontWeight.w300, AppColors.textPrimary, color);
 
   static TextStyle label({Color? color}) =>
       _league(12, FontWeight.w400, AppColors.textPrimary, color);

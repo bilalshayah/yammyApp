@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yammyapp/features/orders/presentation/pages/cancelOrdreScreen.dart';
+import 'package:yammyapp/features/orders/presentation/pages/leaveReviewScreen.dart';
 import '../../features/auth/presentation/pages/fingerPrint_page/fingerprints_screen.dart';
 import '../../features/auth/presentation/pages/login_screen.dart';
 import '../../features/auth/presentation/pages/register_screen.dart';
@@ -40,7 +42,7 @@ class AppRouter {
       case splash:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
 
-        case welcome:
+      case welcome:
         return MaterialPageRoute(builder: (_) => const WelcomeScreen());
 
       case onboarding:
@@ -103,8 +105,15 @@ class AppRouter {
       case fingerprint:
         return MaterialPageRoute(builder: (_) => FingerprintScreen());
 
-      case myOrders:
+        case myOrders:
         return MaterialPageRoute(builder: (_) => MyOrdersScreen());
+
+      // case leaveReview:
+        // return MaterialPageRoute(builder: (_) => Leavereviewscreen());
+
+      case cancelOrder:
+        final orderId = settings.arguments as String;
+        return MaterialPageRoute(builder: (_) => CancelOrderScreen(orderId: orderId,));
 
       default:
         return MaterialPageRoute(

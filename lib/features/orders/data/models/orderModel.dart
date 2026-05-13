@@ -1,38 +1,37 @@
+import 'package:yammyapp/features/orders/domain/entity/orderEntity.dart';
+
 class Ordermodel {
-  final String id;
-  final String orderNumber;
-  final String status;
+ final String id;
+  final String? orderNumber;
+  final String? status;
   final String restaurantId;
   final String addressId;
   final String? paymentStatus;
   final String? paymentMethod;
   final String? subtotal;
   final String? deliveryFee;
-  final String? discount;
   final String? tax;
   final String? total;
   final String? notes;
-  final int? estimatedTime;
   final String? couponCode;
   final String? createdAt;
+  final String? discount;
+  final String? estimatedTime;
   final List<OrderItemModel>? orderItems;
 
   Ordermodel({
     required this.id,
-    required this.orderNumber,
-    required this.status,
+     this.orderNumber,
+     this.status,
     this.paymentStatus,
     this.paymentMethod,
     this.subtotal,
     this.deliveryFee,
-    this.discount,
-    this.tax,
     this.total,
     this.notes,
-    this.estimatedTime,
     this.couponCode,
     this.createdAt,
-    this.orderItems, required this.restaurantId, required this.addressId,
+    this.orderItems, required this.restaurantId, required this.addressId, this.tax, this.discount, this.estimatedTime,
   });
 
   factory Ordermodel.fromJson(Map<String, dynamic> json) {
@@ -40,8 +39,8 @@ class Ordermodel {
       id: json['id'],
       orderNumber: json['order_number'],
       status: json['status'],
-      restaurantId:json['restaurant_id'],
-      addressId:json['restaurant_id'],
+      restaurantId: json['restaurant_id'],
+      addressId: json['address_id'],
       paymentStatus: json['payment_status'],
       paymentMethod: json['payment_method'],
       subtotal: json['subtotal'],
@@ -53,7 +52,7 @@ class Ordermodel {
       estimatedTime: json['estimated_time'],
       couponCode: json['coupon_code'],
       createdAt: json['created_at'],
-      orderItems: json['order_items'] != null
+      orderItems: json['order_items'] is List
           ? (json['order_items'] as List)
                 .map((e) => OrderItemModel.fromJson(e))
                 .toList()
@@ -90,3 +89,4 @@ class OrderItemModel {
     );
   }
 }
+
