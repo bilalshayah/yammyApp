@@ -36,6 +36,8 @@ class AppRouter {
   static const String myAddress = '/DeliveryAddress';
   static const String cart = '/cart';
   static const String addAddress = '/addAddress';
+  static const String leaveReview = '/leaveReview';
+  static const String cancelOrder = '/cancelOrder';
 
   static Route generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -105,15 +107,22 @@ class AppRouter {
       case fingerprint:
         return MaterialPageRoute(builder: (_) => FingerprintScreen());
 
-        case myOrders:
+      case myOrders:
         return MaterialPageRoute(builder: (_) => MyOrdersScreen());
 
-      // case leaveReview:
-        // return MaterialPageRoute(builder: (_) => Leavereviewscreen());
+      case leaveReview:
+        final args = settings.arguments as Map<String, dynamic>? ?? {};
+        final image = args['image'] as String? ?? '';
+        final name = args['name'] as String? ?? '';
+        return MaterialPageRoute(
+          builder: (_) => Leavereviewscreen(image: image, name: name),
+        );
 
       case cancelOrder:
         final orderId = settings.arguments as String;
-        return MaterialPageRoute(builder: (_) => CancelOrderScreen(orderId: orderId,));
+        return MaterialPageRoute(
+          builder: (_) => CancelOrderScreen(orderId: orderId),
+        );
 
       default:
         return MaterialPageRoute(

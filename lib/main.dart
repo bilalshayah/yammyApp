@@ -21,12 +21,11 @@ import 'features/orders/domain/usecases/getOrderUseCase.dart';
 import 'features/orders/presentation/bloc/order_bloc.dart';
 import 'firebase_options.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await Firebase.initializeApp();
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Color(0xffF5CB58),
@@ -42,8 +41,6 @@ void main() async{
   );
   final cancelorderusecase = Cancelorderusecase(orderrepository: repository);
   final createorderUseCase = CreateorderUseCase(repository: repository);
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
   await LocalNotificationService.init();
   await FireNotificationService.initFireNotification();
   runApp(
@@ -54,7 +51,9 @@ void main() async{
               AuthBloc(authRepository: AuthRepository(dioClient: dioClient)),
         ),
         BlocProvider<NotificationBloc>(
-          create: (context) => NotificationBloc(repository: NotificationRepository(dioClient: dioClient)),
+          create: (context) => NotificationBloc(
+            repository: NotificationRepository(dioClient: dioClient),
+          ),
         ),
         BlocProvider(
           create: (_) => OrderBloc(
