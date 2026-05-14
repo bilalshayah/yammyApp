@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yammyapp/features/cart/data/repository/cart_repository.dart';
 import 'package:yammyapp/features/orders/domain/usecases/cancelOrderUseCase.dart';
 import 'package:yammyapp/features/orders/domain/usecases/createOrderUseCase.dart';
 import 'package:yammyapp/features/orders/domain/usecases/getOrderDetailsUseCase.dart';
@@ -12,6 +13,7 @@ import 'core/router/app_router.dart';
 import 'core/theme/app_theme.dart';
 import 'features/auth/data/repository/auth_repository.dart';
 import 'features/auth/presentation/bloc/auth_bloc.dart';
+import 'features/cart/presentation/bloc/cart_bloc.dart';
 import 'features/notifications/data/repository/notification_repository.dart';
 import 'features/notifications/presentation/bloc/notification_bloc.dart';
 import 'features/orders/data/datasources/orderDatasource.dart';
@@ -47,11 +49,16 @@ void main() async {
       providers: [
         BlocProvider(
           create: (context) =>
-              AuthBloc(authRepository: AuthRepository(dioClient: dioClient)),
+              AuthBloc(authRepository: AuthRepository()),
         ),
         BlocProvider<NotificationBloc>(
           create: (context) => NotificationBloc(
-            repository: NotificationRepository(dioClient: dioClient),
+            repository: NotificationRepository(),
+          ),
+        ),
+        BlocProvider<CartBloc>(
+          create: (context) => CartBloc(
+            repository: CartRepository(),
           ),
         ),
         BlocProvider(

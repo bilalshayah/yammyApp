@@ -53,8 +53,8 @@ class _HomePageState extends State<HomePage> {
       endDrawer: const CustomNavigationDrawer(),
       backgroundColor: AppColors.activeCategory,
       bottomNavigationBar: const NavBar(currentIndex: 0),
-      body: SingleChildScrollView(
-        child: SafeArea(
+      body: SafeArea(
+        child: SingleChildScrollView(
           child: Column(
             children: [
               Padding(
@@ -82,7 +82,7 @@ class _HomePageState extends State<HomePage> {
                             Scaffold.of(context).openEndDrawer();
                           }),
                           ),
-          
+
                       ],
                     ),
                     SizedBox(height: size.height * 0.02),

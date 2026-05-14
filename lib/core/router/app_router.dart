@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:yammyapp/features/cart/presentation/pages/checkout_screen.dart';
 import 'package:yammyapp/features/orders/presentation/pages/cancelOrdreScreen.dart';
 import 'package:yammyapp/features/orders/presentation/pages/leaveReviewScreen.dart';
 import '../../features/auth/presentation/pages/fingerPrint_page/fingerprints_screen.dart';
@@ -35,6 +36,7 @@ class AppRouter {
   static const String myProfile = '/myProfile';
   static const String myAddress = '/DeliveryAddress';
   static const String cart = '/cart';
+  static const String checkout = 'checkout';
   static const String addAddress = '/addAddress';
   static const String leaveReview = '/leaveReview';
   static const String cancelOrder = '/cancelOrder';
@@ -55,6 +57,9 @@ class AppRouter {
 
       case cart:
         return MaterialPageRoute(builder: (_) => CartScreen());
+
+      case checkout:
+        return MaterialPageRoute(builder: (_) => CheckoutScreen());
 
       case login:
         return MaterialPageRoute(builder: (_) => LoginScreen());

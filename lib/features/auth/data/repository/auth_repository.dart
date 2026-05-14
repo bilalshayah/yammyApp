@@ -5,16 +5,13 @@ import '../../../../core/storage/storage_service.dart';
 import '../models/user_model.dart';
 
 class AuthRepository {
-  final DioClient dioClient;
+  final Dio dio = Dio();
   final StorageService storageService = StorageService();
 
-  AuthRepository({
-    required this.dioClient,
-  });
 
   Future<UserModel> login(String email, String password) async {
     try {
-      final response = await dioClient.dio.post(
+      final response = await dio.post(
         AppEndpoints.login,
         data: {"email": email, "password": password},
       );
@@ -41,7 +38,7 @@ class AuthRepository {
     required String phone,
   }) async {
     try {
-      final response = await dioClient.dio.post(
+      final response = await dio.post(
         AppEndpoints.register,
         data: {
           "email": email,
@@ -69,7 +66,7 @@ class AuthRepository {
 
   Future<void> resetPassword({required String token, required String newPassword}) async {
     try {
-      await dioClient.dio.post(
+      await dio.post(
         AppEndpoints.resetPassword,
         data: {
           "token": token,
@@ -84,7 +81,7 @@ class AuthRepository {
 
   Future<String> requestForgetPasswordToken(String email) async {
     try {
-      final response = await dioClient.dio.post(
+      final response = await dio.post(
         AppEndpoints.forgotPassword,
         data: {"email": email},
       );
