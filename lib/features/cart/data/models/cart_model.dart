@@ -53,14 +53,16 @@ class MenuItemModel {
   final String name;
   final String image;
   final double price;
+  final DateTime createdAt;
 
-  MenuItemModel({required this.name, required this.image, required this.price});
+  MenuItemModel({required this.name, required this.image, required this.price, required this.createdAt});
 
   factory MenuItemModel.fromJson(Map<String, dynamic> json) {
     return MenuItemModel(
       name: json['name'] ?? '',
       image: json['image'] ?? '',
       price: double.tryParse(json['price'].toString()) ?? 0.0,
+      createdAt: json['created_at'] ?? 0,
     );
   }
 }

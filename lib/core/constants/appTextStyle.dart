@@ -38,6 +38,7 @@ class AppTextStyles {
 
   static TextStyle h3({Color? color}) =>
       _league(14, FontWeight.w300, AppColors.textPrimary, color);
+
   static TextStyle review({Color? color}) =>
       _league(25, FontWeight.w300, AppColors.textPrimary, color);
 
@@ -52,6 +53,7 @@ class AppTextStyles {
 
   static TextStyle activetab({Color? color}) =>
       _league(17, FontWeight.w500, AppColors.textWhite, color);
+
   static TextStyle tab({Color? color}) =>
       _league(17, FontWeight.w400, AppColors.textWhite, color);
 

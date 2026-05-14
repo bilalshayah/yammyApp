@@ -18,7 +18,17 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         final cart = await repository.fetchCartData();
         emit(CartFetched(cart));
       } catch (e) {
-        emit(CartError("فشل في تحميل السلة، تأكد من الاتصال"));
+        emit(CartError("Failed to fetch cart"));
+      }
+    });
+
+    on<ItemDelete>((event, emit) async {
+      emit(CartLoading());
+      try {
+        final updatedCart = await repository.itemCartDelete(event.itemId);
+        emit(CartFetched(updatedCart));
+      } catch (e) {
+        emit(CartError("Failed to delete item"));
       }
     });
     //

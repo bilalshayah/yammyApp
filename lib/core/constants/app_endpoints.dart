@@ -18,7 +18,7 @@ class AppEndpoints {
   // Cart
   static const String cart = '$baseUrl/cart/';
   static const String cartItems = '$baseUrl/cart/items';
-  static String cartItem(String itemId) => '$baseUrl/cart/items/$itemId';
+  static String deleteCartItem(String itemId) => '$baseUrl/cart/items/$itemId';
 
   // Menu
   static const String categories = '$baseUrl/categories/';

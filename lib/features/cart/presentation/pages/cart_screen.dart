@@ -11,6 +11,7 @@ import 'package:yammyapp/features/cart/presentation/widgets/cart_summary.dart';
 import '../../../../core/extensions/context_extensions.dart';
 import '../../../../core/router/app_router.dart';
 import '../bloc/cart_state.dart';
+import '../widgets/cart_divider.dart';
 import '../widgets/cart_item.dart';
 import '../bloc/cart_bloc.dart';
 
@@ -72,7 +73,7 @@ class CartScreen extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 30),
-                        const Divider(color: Colors.white, thickness: 1, indent: 30, endIndent: 30),
+                        CartDivider(),
                         SizedBox(height: context.screenHeight * 0.02),
                         Text(
                             "You have ${cart.cartItems.length} items in the cart",
@@ -91,7 +92,7 @@ class CartScreen extends StatelessWidget {
                                       item.quantity,
                                       item.menuItem.image
                                   ),
-                                  const Divider(color: Colors.white38, height: 30),
+                                  CartDivider(),
                                 ],
                               )).toList(),
                               CartSummary("Subtotal", "\$${cart.subtotal.toStringAsFixed(2)}"),

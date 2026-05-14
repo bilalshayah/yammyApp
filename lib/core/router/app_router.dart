@@ -69,6 +69,7 @@ class AppRouter {
 
       case myProfile:
         return MaterialPageRoute(builder: (_) => ProfileScreen());
+
       case addAddress:
         final addressBloc = settings.arguments as AddressBloc?;
         if (addressBloc != null) {

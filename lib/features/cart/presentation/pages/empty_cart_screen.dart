@@ -6,6 +6,8 @@ import 'package:yammyapp/core/constants/svg_icon.dart';
 import 'package:yammyapp/core/extensions/context_extensions.dart';
 import 'package:yammyapp/core/router/app_router.dart';
 
+import '../widgets/cart_divider.dart';
+
 class EmptyCartScreen extends StatelessWidget {
   const EmptyCartScreen({super.key});
 
@@ -56,12 +58,7 @@ class EmptyCartScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: context.screenHeight * 0.04),
-            Divider(
-              color: Colors.white,
-              thickness: 1,
-              indent: context.screenWidth * 0.1,
-              endIndent: context.screenWidth * 0.1,
-            ),
+            CartDivider(),
             SizedBox(height: context.screenHeight * 0.02),
             Text(
               "Your cart is empty",

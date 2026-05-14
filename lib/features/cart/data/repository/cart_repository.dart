@@ -21,6 +21,22 @@ class CartRepository {
     }
   }
 
+  Future<CartModel> itemCartDelete(String itemId) async {
+    try {
+       final response = await dio.delete(
+           AppEndpoints.deleteCartItem(itemId)
+       );
+       return CartModel.fromJson(response.data);
+
+    } on DioException catch (e) {
+
+      throw Exception("خطأ في الاتصال بالسيرفر: ${e.message}");
+
+    } catch (e) {
+      throw Exception("حدث خطأ غير متوقع: $e");
+    }
+  }
+
   // Future<void> updateItemQuantity(String itemId, int newQuantity) async {
   //   try {
   //     await dio.put(

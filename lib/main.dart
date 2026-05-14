@@ -83,7 +83,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      initialRoute: AppRouter.splash,
+      initialRoute: AppRouter.checkout,
       onGenerateRoute: (settings) => AppRouter.generateRoute(settings),
     );
   }
